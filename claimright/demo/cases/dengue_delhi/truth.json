@@ -1,0 +1,52 @@
+{
+  "title": "Dengue, 4 days, Delhi",
+  "bill": {
+    "hospital_name": "Demo City Hospital, New Delhi",
+    "patient_name": "Ravi Sharma",
+    "admission_date": "2026-10-06",
+    "discharge_date": "2026-10-10",
+    "days": 4,
+    "room_category": "Single private room",
+    "room_rent_per_day": 8000,
+    "follows_differential_billing": true,
+    "lines": [
+      {"description": "Room rent - single private (4 days x 8,000)", "category": "room", "amount": 32000},
+      {"description": "Doctor consultation and visits", "category": "doctor_fees", "amount": 12000},
+      {"description": "Nursing charges", "category": "nursing", "amount": 6000},
+      {"description": "Pharmacy - medicines and IV fluids", "category": "pharmacy", "amount": 28000},
+      {"description": "Laboratory - CBC, NS1 antigen, platelet counts", "category": "diagnostics", "amount": 18000},
+      {"description": "Consumables - gloves, syringes, cannula", "category": "consumables", "amount": 4000},
+      {"description": "Admission kit and toiletries", "category": "other", "amount": 1500}
+    ],
+    "gross_total": 101500,
+    "discount": 0,
+    "net_total": 101500
+  },
+  "settlement": {
+    "insurer_name": "Demo Suraksha Health Insurance Ltd",
+    "claim_number": "DSH/CL/2026/104552",
+    "settlement_date": "2026-10-28",
+    "amount_claimed": 101500,
+    "deductions": [
+      {"description": "Room rent", "category": "room", "amount": 12000, "reason_text": "Room rent above eligibility (Rs 5,000/day)", "reason_type": "excess_room_rent"},
+      {"description": "Doctor consultation and visits", "category": "doctor_fees", "amount": 4500, "reason_text": "Proportionate deduction - room rent ratio", "reason_type": "proportionate"},
+      {"description": "Nursing charges", "category": "nursing", "amount": 2250, "reason_text": "Proportionate deduction - room rent ratio", "reason_type": "proportionate"},
+      {"description": "Pharmacy - medicines and IV fluids", "category": "pharmacy", "amount": 10500, "reason_text": "Proportionate deduction - room rent ratio", "reason_type": "proportionate"},
+      {"description": "Laboratory investigations", "category": "diagnostics", "amount": 6750, "reason_text": "Proportionate deduction - room rent ratio", "reason_type": "proportionate"},
+      {"description": "Consumables", "category": "consumables", "amount": 4000, "reason_text": "Non-medical expenses - not payable", "reason_type": "non_payable"},
+      {"description": "Admission kit and toiletries", "category": "other", "amount": 1500, "reason_text": "Non-medical expenses - not payable", "reason_type": "non_payable"}
+    ],
+    "co_pay_amount": 0,
+    "amount_approved": 58000
+  },
+  "policy": {
+    "insurer_name": "Demo Suraksha Health Insurance Ltd",
+    "policy_number": "DSH-HF-2026-778812",
+    "sum_insured": 500000,
+    "room_rent_limit_per_day": 5000,
+    "consumables_cover": false,
+    "co_pay_percent": 0,
+    "sub_limits": []
+  },
+  "expected": {"recoverable": 19250, "to_clarify": 0, "wrong_rules": ["R1", "R1", "R5"]}
+}

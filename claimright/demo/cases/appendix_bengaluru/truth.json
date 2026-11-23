@@ -1,0 +1,46 @@
+{
+  "title": "Appendix surgery, 3 days, Bengaluru (clean claim)",
+  "bill": {
+    "hospital_name": "Demo Lakeview Hospital, Bengaluru",
+    "patient_name": "Arjun Rao",
+    "admission_date": "2026-08-21",
+    "discharge_date": "2026-08-24",
+    "days": 3,
+    "room_category": "Twin sharing room",
+    "room_rent_per_day": 4000,
+    "follows_differential_billing": true,
+    "lines": [
+      {"description": "Room rent - twin sharing (3 days x 4,000)", "category": "room", "amount": 12000},
+      {"description": "Laparoscopic appendectomy - surgeon, anaesthetist, OT", "category": "procedure", "amount": 60000},
+      {"description": "Pharmacy - medicines", "category": "pharmacy", "amount": 14000},
+      {"description": "Diagnostics - ultrasound, blood tests", "category": "diagnostics", "amount": 7000},
+      {"description": "Consumables - gloves, syringes", "category": "consumables", "amount": 3000},
+      {"description": "Attendant food", "category": "other", "amount": 1200}
+    ],
+    "gross_total": 97200,
+    "discount": 0,
+    "net_total": 97200
+  },
+  "settlement": {
+    "insurer_name": "Demo Suraksha Health Insurance Ltd",
+    "claim_number": "DSH/CL/2026/087640",
+    "settlement_date": "2026-09-10",
+    "amount_claimed": 97200,
+    "deductions": [
+      {"description": "Consumables - gloves, syringes", "category": "consumables", "amount": 3000, "reason_text": "Non-medical items - not payable", "reason_type": "non_payable"},
+      {"description": "Attendant food", "category": "other", "amount": 1200, "reason_text": "Non-medical expenses - not payable", "reason_type": "non_payable"}
+    ],
+    "co_pay_amount": 9300,
+    "amount_approved": 83700
+  },
+  "policy": {
+    "insurer_name": "Demo Suraksha Health Insurance Ltd",
+    "policy_number": "DSH-HF-2026-330978",
+    "sum_insured": 300000,
+    "room_rent_limit_per_day": 4000,
+    "consumables_cover": false,
+    "co_pay_percent": 10,
+    "sub_limits": []
+  },
+  "expected": {"recoverable": 0, "to_clarify": 0, "wrong_rules": []}
+}

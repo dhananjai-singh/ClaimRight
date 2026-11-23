@@ -1,0 +1,13 @@
+.venv
+.env
+data
+tests
+scripts
+eval
+__pycache__
+.pytest_cache
+*.pyc
+.env.*
+!.env.example
+toolbox
+Frontend

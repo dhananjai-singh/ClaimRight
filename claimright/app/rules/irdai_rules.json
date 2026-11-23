@@ -1,0 +1,111 @@
+{
+  "_note": "status: 'verified' = rule text read in the circular (or a full copy of it); 'policy' = comes from the policy wording itself; 'press' = reported by several news outlets, primary order not yet read; 'unverified' = do not show in the demo until checked.",
+  "rules": [
+    {
+      "id": "R1",
+      "title": "Proportionate deduction cannot touch medicines, consumables, implants or tests",
+      "text": "If you took a higher room category, a proportionate deduction may only apply to the 'associate medical expenses' defined in your policy. IRDAI does not allow these in that definition: cost of pharmacy and consumables; cost of implants and medical devices; cost of diagnostics. Insurers may not recover proportionate deductions on anything else.",
+      "source_title": "IRDAI circular IRDAI/HLT/REG/CIR/151/06/2020 dated 11 June 2020, clauses 4 and 5",
+      "source_url": "https://irdai.gov.in/documents/37343/365525/Modified+Guidelines+on+Product+filing+in+Health+Insurance+Business-Norms+on.pdf/7b50effc-e553-f0a6-389d-3ca90ab11af5?version=1.0&t=1631531502137&download=true",
+      "status": "verified",
+      "note": "Read in full on irdai.gov.in (final circular, 20 Nov 2026). Applies to products filed from 1 Oct 2020 and to all existing policies at renewal from 1 Apr 2021; insurers had to put this definition into their policy wordings. The 29 May 2024 Health Master Circular (IRDAI/HLT/CIR/PRO/84/5/2024) supersedes circulars listed in its Annexure-6 and does not restate these norms; whether 151/06/2020 is in that list is still unchecked."
+    },
+    {
+      "id": "R1-ICU",
+      "title": "No proportionate deduction on ICU charges",
+      "text": "Insurers are not permitted to apply proportionate deduction for ICU charges, as different categories of ICU are not there.",
+      "source_title": "IRDAI circular IRDAI/HLT/REG/CIR/151/06/2020 dated 11 June 2020, clause 7",
+      "source_url": "https://irdai.gov.in/documents/37343/365525/Modified+Guidelines+on+Product+filing+in+Health+Insurance+Business-Norms+on.pdf/7b50effc-e553-f0a6-389d-3ca90ab11af5?version=1.0&t=1631531502137&download=true",
+      "status": "verified",
+      "note": "Read in full on irdai.gov.in (final circular, 20 Nov 2026). Applies to products filed from 1 Oct 2020 and to all existing policies at renewal from 1 Apr 2021; insurers had to put this definition into their policy wordings. The 29 May 2024 Health Master Circular (IRDAI/HLT/CIR/PRO/84/5/2024) supersedes circulars listed in its Annexure-6 and does not restate these norms; whether 151/06/2020 is in that list is still unchecked."
+    },
+    {
+      "id": "R1-DB",
+      "title": "No proportionate deduction if the hospital doesn't bill by room category",
+      "text": "Proportionate deductions cannot be applied for hospitals that do not follow differential billing, or for expenses where differential billing based on room category is not adopted.",
+      "source_title": "IRDAI circular IRDAI/HLT/REG/CIR/151/06/2020 dated 11 June 2020, clause 6",
+      "source_url": "https://irdai.gov.in/documents/37343/365525/Modified+Guidelines+on+Product+filing+in+Health+Insurance+Business-Norms+on.pdf/7b50effc-e553-f0a6-389d-3ca90ab11af5?version=1.0&t=1631531502137&download=true",
+      "status": "verified",
+      "note": "Read in full on irdai.gov.in (final circular, 20 Nov 2026). Applies to products filed from 1 Oct 2020 and to all existing policies at renewal from 1 Apr 2021; insurers had to put this definition into their policy wordings. The 29 May 2024 Health Master Circular (IRDAI/HLT/CIR/PRO/84/5/2024) supersedes circulars listed in its Annexure-6 and does not restate these norms; whether 151/06/2020 is in that list is still unchecked."
+    },
+    {
+      "id": "R2",
+      "title": "Consumables are covered by your policy",
+      "text": "Your policy includes a consumables / non-medical items benefit, so consumables cannot be cut as 'non-payable'.",
+      "source_title": "Your policy wording (consumables benefit)",
+      "source_url": "",
+      "status": "policy"
+    },
+    {
+      "id": "R3",
+      "title": "Hospital discount must reach the policyholder",
+      "text": "IRDAI penalised an insurer after finding that discounts offered by network hospitals were not reflected in a way that passed the benefit to policyholders, and that detailed settlement letters explaining deductions were not issued.",
+      "source_title": "IRDAI order IRDAI/E&C/ORD/MISC/138/12/2025 dated 15 Dec 2025 against Care Health Insurance (as reported)",
+      "source_url": "https://www.outlookmoney.com/insurance/irdai-fines-care-health-insurance-rs-1-crore-after-inspection-flags-failures-in-claims-and-internal-controls",
+      "status": "press",
+      "todo": "Read the primary order on irdai.gov.in."
+    },
+    {
+      "id": "R4",
+      "title": "Every deduction needs a written reason",
+      "text": "A deduction with no clear reason should be explained in writing by the insurer. IRDAI has penalised an insurer for not issuing detailed settlement letters explaining deductions.",
+      "source_title": "IRDAI order dated 15 Dec 2025 against Care Health Insurance (as reported)",
+      "source_url": "https://www.outlookmoney.com/insurance/irdai-fines-care-health-insurance-rs-1-crore-after-inspection-flags-failures-in-claims-and-internal-controls",
+      "status": "press"
+    },
+    {
+      "id": "R5",
+      "title": "The numbers must add up",
+      "text": "Amount claimed minus all deductions and co-pay must equal the amount approved.",
+      "source_title": "Arithmetic check",
+      "source_url": "",
+      "status": "policy"
+    },
+    {
+      "id": "R6",
+      "title": "Only limits written in your policy can be applied",
+      "text": "A co-pay or sub-limit can only be applied if your policy wording contains it, and only at the rate/amount it states.",
+      "source_title": "Your policy wording (co-pay and sub-limits)",
+      "source_url": "",
+      "status": "policy"
+    },
+    {
+      "id": "R7",
+      "title": "Excess room rent must be calculated correctly",
+      "text": "If the room cost more than the policy's room rent limit, only the difference per day times the number of days can be cut as excess room rent.",
+      "source_title": "Your policy wording (room rent limit)",
+      "source_url": "",
+      "status": "policy"
+    }
+  ],
+  "escalation": [
+    {
+      "id": "E1",
+      "step": "Complaint to the insurer's Grievance Redressal Officer",
+      "days_after_previous": 0,
+      "text": "Insurers must resolve a complaint within 14 days, with reasons referring to the policy terms.",
+      "source_title": "IRDAI Master Circular on Protection of Policyholders' Interests, 5 Sep 2024 (as reported)",
+      "source_url": "https://www.outlookmoney.com/insurance/robust-grievance-redressal-and-more-whats-in-irdais-latest-master-circular-for-the-policyholders",
+      "status": "press"
+    },
+    {
+      "id": "E2",
+      "step": "Escalate on Bima Bharosa (IRDAI's grievance portal) if there's no reply or you disagree",
+      "days_after_previous": 14,
+      "text": "Register the unresolved complaint on bimabharosa.irdai.gov.in.",
+      "source_title": "Bima Bharosa portal",
+      "source_url": "https://bimabharosa.irdai.gov.in/",
+      "status": "verified"
+    },
+    {
+      "id": "E3",
+      "step": "Complaint to the Insurance Ombudsman (free)",
+      "days_after_previous": 16,
+      "text": "You can complain to the Ombudsman once the insurer rejects your complaint, replies and you're not satisfied, or doesn't reply within one month. File within one year of that. It's free.",
+      "source_title": "Insurance Ombudsman Rules, 2017 (as amended till 9 Nov 2023), rule 14(3)",
+      "source_url": "https://cioins.co.in/OmbudsmanRules2017",
+      "status": "verified",
+      "note": "Read in the official consolidated text hosted by the Council for Insurance Ombudsmen, 20 Nov 2026."
+    }
+  ]
+}

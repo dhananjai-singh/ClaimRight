@@ -1,0 +1,48 @@
+{
+  "title": "Knee replacement, 5 days, Pune",
+  "bill": {
+    "hospital_name": "Demo Sahyadri Orthopaedic Hospital, Pune",
+    "patient_name": "Sunita Deshpande",
+    "admission_date": "2026-09-14",
+    "discharge_date": "2026-09-19",
+    "days": 5,
+    "room_category": "Private room",
+    "room_rent_per_day": 6000,
+    "follows_differential_billing": true,
+    "lines": [
+      {"description": "Room rent - private (5 days x 6,000)", "category": "room", "amount": 30000},
+      {"description": "Surgeon, anaesthetist and OT charges - total knee replacement", "category": "procedure", "amount": 120000},
+      {"description": "Knee implant (cemented, right knee)", "category": "implants", "amount": 140000},
+      {"description": "Pharmacy - medicines", "category": "pharmacy", "amount": 35000},
+      {"description": "Consumables - surgical gloves, drapes, bandages", "category": "consumables", "amount": 22000},
+      {"description": "Diagnostics - X-ray, blood tests, ECG", "category": "diagnostics", "amount": 15000},
+      {"description": "Physiotherapy sessions", "category": "other", "amount": 8000}
+    ],
+    "gross_total": 370000,
+    "discount": 18500,
+    "net_total": 351500
+  },
+  "settlement": {
+    "insurer_name": "Demo Suraksha Health Insurance Ltd",
+    "claim_number": "DSH/CL/2026/098311",
+    "settlement_date": "2026-10-03",
+    "amount_claimed": 351500,
+    "deductions": [
+      {"description": "Consumables - surgical gloves, drapes, bandages", "category": "consumables", "amount": 22000, "reason_text": "Non-medical items - not payable", "reason_type": "non_payable"},
+      {"description": "Knee implant", "category": "implants", "amount": 40000, "reason_text": "Implant capped as per sub-limit", "reason_type": "sub_limit"},
+      {"description": "Physiotherapy sessions", "category": "other", "amount": 8000, "reason_text": "", "reason_type": "no_reason"}
+    ],
+    "co_pay_amount": 0,
+    "amount_approved": 281500
+  },
+  "policy": {
+    "insurer_name": "Demo Suraksha Health Insurance Ltd",
+    "policy_number": "DSH-HF-2026-551204",
+    "sum_insured": 1000000,
+    "room_rent_limit_per_day": 6000,
+    "consumables_cover": true,
+    "co_pay_percent": 0,
+    "sub_limits": [{"name": "Cataract (per eye)", "limit": 50000}]
+  },
+  "expected": {"recoverable": 62000, "to_clarify": 11500, "wrong_rules": ["R2", "R6"]}
+}

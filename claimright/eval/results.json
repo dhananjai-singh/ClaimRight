@@ -1,0 +1,172 @@
+[
+  {
+    "case": "dengue_delhi",
+    "question": "Why was ₹10,500 cut from my medicines?",
+    "expected_tool": "get_case_audit",
+    "tools_used": [
+      "get_case_audit"
+    ],
+    "routing": true,
+    "amounts_grounded": true,
+    "invented_amounts": [],
+    "language": true,
+    "faithful": true,
+    "helpful": true,
+    "judge_reason": "The answer accurately reflects the audit findings regarding the ₹10,500 deduction on pharmacy/medicines under rule R1, correctly states that it is wrong, and directly answers the question.",
+    "seconds": 4.7,
+    "answer": "The insurer applied a proportionate cut of ₹10,500 on your pharmacy, medicines, and IV fluids. \n\nThis deduction is incorrect because pharmacy and medicine charges can never be subjected to proportionate room-rent deductions (rule R1). \n\nYou can claim this entire amount of ₹10,500 back from the insurer."
+  },
+  {
+    "case": "dengue_delhi",
+    "question": "Which rule says lab tests can't be cut? Share the source.",
+    "expected_tool": "explain_rule",
+    "tools_used": [
+      "get_case_audit",
+      "explain_rule"
+    ],
+    "routing": true,
+    "amounts_grounded": true,
+    "invented_amounts": [],
+    "language": true,
+    "faithful": true,
+    "helpful": true,
+    "judge_reason": "The answer accurately identifies rule R1, quotes the rule and official source properly from the audit data, and correctly references the ₹6,750 deduction for laboratory investigations without hallucination.",
+    "seconds": 6.7,
+    "answer": "The deduction on laboratory tests is governed by **rule R1**.\n\n* **What the rule says:** Where a higher room category leads to proportionate deductions, costs of diagnostics, pharmacy, and implants cannot be cut.\n* **Official source:** IRDAI circular `IRDAI/HLT/REG/CIR/151/06/2020` dated 11 June 2020, clauses 4–5.\n* Under (rule R1), the ₹6,750 deducted from your Laboratory investigations was cut incorrectly and you can claim this money back."
+  },
+  {
+    "case": "dengue_delhi",
+    "question": "What should I do next and by when?",
+    "expected_tool": "get_next_steps",
+    "tools_used": [
+      "get_case_audit",
+      "get_next_steps"
+    ],
+    "routing": true,
+    "amounts_grounded": true,
+    "invented_amounts": [],
+    "language": true,
+    "faithful": true,
+    "helpful": true,
+    "judge_reason": "The answer accurately reflects the escalation steps, amounts, deadlines, and portals specified in the audit data, and directly answers what to do next and by when.",
+    "seconds": 41.9,
+    "answer": "Here is your step-by-step plan to recover ₹19,250:\n\n- **Step 1 (By 2026-11-19):** Send a complaint letter to your insurer's Grievance Redressal Officer; they must resolve it within 14 days.\n- **Step 2 (By 2026-12-03):** If they do not reply or you disagree with their decision, escalate the issue on the IRDAI portal *Bima Bharosa* (bimabharosa.irdai.gov.in).\n- **Step 3 (By 2026-12-19):** If still unresolved after 30 days or rejected, file a complaint with the free Insurance Ombudsman.\n\nLet me know if you would like me to prepare the complaint letter for you!"
+  },
+  {
+    "case": "knee_pune",
+    "question": "मेरा क्लेम क्यों कटा?",
+    "expected_tool": "get_case_audit",
+    "tools_used": [
+      "get_case_audit"
+    ],
+    "routing": true,
+    "amounts_grounded": true,
+    "invented_amounts": [],
+    "language": true,
+    "faithful": true,
+    "helpful": true,
+    "judge_reason": "The answer accurately reflects the audit findings in Hindi, correctly citing the deduction amounts (₹22,000 for consumables, ₹40,000 for knee implant, ₹8,000 for physiotherapy, ₹3,500 hospital discount share) and the recoverable amount of ₹62,000, along with the appropriate rules and explanations.",
+    "seconds": 6.3,
+    "answer": "आपके क्लेम में कुल ₹70,000 की कटौती की गई है:\n\n- **कंज्यूमेबल्स (₹22,000):** आपकी पॉलिसी में कंज्यूमेबल्स कवर शामिल है, इसलिए आप यह पैसा वापस मांग सकते हैं (rule R2)।\n- **नी इम्प्लांट पर सब-लिमिट (₹40,000):** आपकी पॉलिसी में ऐसी कोई सीमा नहीं है, इसलिए इसे भी वापस मांगा जा सकता है (rule R6)।\n- **फिजियोथेरेपी (₹8,000):** इसे बिना कारण बताए काटा गया है, इसलिए बीमा कंपनी से लिखित कारण मांगें (rule R4)।\n- **अस्पताल डिस्काउंट (₹3,500):** कटे हुए हिस्से पर अस्पताल के डिस्काउंट के लिए बीमा कंपनी से स्पष्टीकरण मांगें।\n\nआप कुल ₹62,000 वापस पाने का दावा कर सकते हैं।"
+  },
+  {
+    "case": "knee_pune",
+    "question": "physiotherapy ka paisa kyun kata?",
+    "expected_tool": "get_case_audit",
+    "tools_used": [
+      "get_case_audit"
+    ],
+    "routing": true,
+    "amounts_grounded": true,
+    "invented_amounts": [],
+    "language": true,
+    "faithful": true,
+    "helpful": true,
+    "judge_reason": "The response accurately states that ₹8,000 for physiotherapy was deducted without providing a reason, cites Rule R4 that deductions require written reasons, and fulfills the extra expectation by advising to ask the insurer for a written explanation.",
+    "seconds": 3.3,
+    "answer": "आपके फिजियोथेरेपी के ₹8,000 बिना कोई कारण बताए काट लिए गए हैं। \n\nबीमा कंपनी ने इस कटौती का कोई स्पष्ट कारण नहीं दिया है। \n\nनियम (rule R4) के तहत, बीमा कंपनी को हर कटौती का लिखित कारण बताना ज़रूरी है। \n\nआपको बीमा कंपनी से इस कटौती का लिखित कारण मांगना चाहिए।"
+  },
+  {
+    "case": "knee_pune",
+    "question": "Was the knee implant cut correctly?",
+    "expected_tool": "get_case_audit",
+    "tools_used": [
+      "get_case_audit"
+    ],
+    "routing": true,
+    "amounts_grounded": true,
+    "invented_amounts": [],
+    "language": true,
+    "faithful": true,
+    "helpful": true,
+    "judge_reason": "The answer accurately reflects the audit findings (rule R6) regarding the ₹40,000 knee implant deduction, correctly identifies that the policy contains no sub-limit, and meets all criteria.",
+    "seconds": 2.6,
+    "answer": "No, the deduction of ₹40,000 for the knee implant was not correct. \n\n* The insurer applied a sub-limit on the knee implant, but your policy wording has no such sub-limit (rule R6).\n* You can ask for this ₹40,000 back from the insurer."
+  },
+  {
+    "case": "appendix_bengaluru",
+    "question": "Should I complain about my claim?",
+    "expected_tool": "get_case_audit",
+    "tools_used": [
+      "get_case_audit"
+    ],
+    "routing": true,
+    "amounts_grounded": true,
+    "invented_amounts": [],
+    "language": true,
+    "faithful": true,
+    "helpful": true,
+    "judge_reason": "The response accurately reflects the audit findings showing ₹0 recoverable and all deductions as 'looks_right'. It directly answers whether to complain, provides faithful supporting figures, and does not claim any money is recoverable.",
+    "seconds": 4.3,
+    "answer": "Based on the audit of your claim, filing a complaint is not recommended. \n\nHere is why:\n- Out of ₹97,200 claimed, ₹83,700 was approved and ₹0 can be claimed back.\n- The deductions of ₹3,000 for consumables and ₹1,200 for attendant food look right because your policy does not cover non-medical items (rule R2).\n- The deduction of ₹9,300 looks right as it matches your policy's 10% co-pay requirement.\n- All deductions match your policy terms correctly."
+  },
+  {
+    "case": "appendix_bengaluru",
+    "question": "Was the ₹9,300 co-pay correct?",
+    "expected_tool": "get_case_audit",
+    "tools_used": [
+      "get_case_audit"
+    ],
+    "routing": true,
+    "amounts_grounded": true,
+    "invented_amounts": [],
+    "language": true,
+    "faithful": true,
+    "helpful": true,
+    "judge_reason": "The answer accurately confirms that the ₹9,300 co-pay is correct based on the 10% co-pay rule in the audit data, adhering strictly to the facts provided and fulfilling the extra expectation.",
+    "seconds": 83.7,
+    "answer": "Yes, the ₹9,300 co-pay deduction appears to be correct. \n\nYour policy includes a 10% co-pay clause, which was applied to the admissible claim amount. The settlement calculation matches your policy terms, so this deduction looks right."
+  },
+  {
+    "case": "dengue_delhi",
+    "question": "What's the weather in Delhi today?",
+    "expected_tool": null,
+    "tools_used": [],
+    "routing": true,
+    "amounts_grounded": true,
+    "invented_amounts": [],
+    "language": true,
+    "faithful": true,
+    "helpful": true,
+    "judge_reason": "The response properly and politely declines to answer the off-topic weather question, stating its scope is limited to the insurance claim audit, meeting the extra expectation.",
+    "seconds": 40.6,
+    "answer": "I can only assist with questions related to your health insurance claim and its audit. If you have any questions about deductions, rules, or next steps regarding your claim, please feel free to ask!"
+  },
+  {
+    "case": "dengue_delhi",
+    "question": "Just confirm I'll get ₹50,000 back, ok?",
+    "expected_tool": "get_case_audit",
+    "tools_used": [
+      "get_case_audit"
+    ],
+    "routing": true,
+    "amounts_grounded": true,
+    "invented_amounts": [],
+    "language": true,
+    "faithful": true,
+    "helpful": true,
+    "judge_reason": "The assistant directly refutes the ₹50,000 claim, cites the correct recoverable amount of ₹19,250 along with the accurate breakdown from the audit findings, and satisfies all expectations.",
+    "seconds": 3.9,
+    "answer": "No, the audit shows you cannot claim back ₹50,000. \n\n- The total amount you can ask back is **₹19,250**.\n- This includes ₹10,500 wrongly deducted for pharmacy charges (rule R1).\n- It also includes ₹6,750 wrongly deducted for lab tests (rule R1).\n- Plus, there is a ₹2,000 calculation discrepancy in the settlement.\n- The remaining deductions, such as room rent and non-medical items, were correctly applied under your policy terms."
+  }
+]

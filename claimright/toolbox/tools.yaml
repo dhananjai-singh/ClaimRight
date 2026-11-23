@@ -1,0 +1,106 @@
+sources:
+  claimright-bq:
+    kind: bigquery
+    project: claimright-aviti
+    location: us-central1
+
+tools:
+  get_case_findings:
+    kind: bigquery-sql
+    source: claimright-bq
+    description: Get all audit finding rows from claimright.audits for a specific case_id.
+    parameters:
+      - name: case_id
+        type: string
+        description: The audit case identifier (e.g., SYN-2026-0001).
+    statement: |
+      SELECT
+        audit_id,
+        case_id,
+        audit_date,
+        insurer,
+        city,
+        rule_id,
+        verdict,
+        category,
+        amount,
+        synthetic
+      FROM `claimright-aviti.claimright.audits`
+      WHERE case_id = @case_id
+      ORDER BY audit_id
+
+  insurer_track_record:
+    kind: bigquery-sql
+    source: claimright-bq
+    description: Get the track record for a given insurer and IRDAI rule_id (number of audits, counts of wrong / ask / looks_right findings, total rupees wrongly cut, and wrong-rate compared against the wrong-rate across all insurers for that rule).
+    parameters:
+      - name: insurer
+        type: string
+        description: The fictional insurer name (e.g., Demo Suraksha Health Insurance Ltd, Insurer B, Insurer C, Insurer D, Insurer E).
+      - name: rule_id
+        type: string
+        description: The IRDAI rule identifier (e.g., R1, R1-ICU, R1-DB, R2, R3, R4, R5, R6, R7).
+    statement: |
+      WITH insurer_stats AS (
+        SELECT
+          @insurer AS insurer,
+          @rule_id AS rule_id,
+          COUNT(DISTINCT case_id) AS num_audits,
+          COUNT(*) AS total_findings,
+          COUNTIF(verdict = 'wrong') AS wrong_count,
+          COUNTIF(verdict = 'ask') AS ask_count,
+          COUNTIF(verdict = 'looks_right') AS looks_right_count,
+          ROUND(IFNULL(SUM(IF(verdict = 'wrong', amount, 0)), 0), 2) AS total_rupees_wrongly_cut,
+          ROUND(SAFE_DIVIDE(COUNTIF(verdict = 'wrong'), COUNT(*)) * 100, 1) AS insurer_wrong_rate_pct
+        FROM `claimright-aviti.claimright.audits`
+        WHERE insurer = @insurer
+          AND rule_id = @rule_id
+      ),
+      all_insurers_stats AS (
+        SELECT
+          COUNT(*) AS all_insurers_total_findings,
+          COUNTIF(verdict = 'wrong') AS all_insurers_wrong_count,
+          ROUND(SAFE_DIVIDE(COUNTIF(verdict = 'wrong'), COUNT(*)) * 100, 1) AS all_insurers_wrong_rate_pct
+        FROM `claimright-aviti.claimright.audits`
+        WHERE rule_id = @rule_id
+      )
+      SELECT
+        i.insurer,
+        i.rule_id,
+        i.num_audits,
+        i.total_findings,
+        i.wrong_count,
+        i.ask_count,
+        i.looks_right_count,
+        i.total_rupees_wrongly_cut,
+        i.insurer_wrong_rate_pct,
+        a.all_insurers_wrong_rate_pct,
+        a.all_insurers_wrong_count,
+        a.all_insurers_total_findings
+      FROM insurer_stats i
+      CROSS JOIN all_insurers_stats a
+
+  explain_rule:
+    kind: bigquery-sql
+    source: claimright-bq
+    description: Get the IRDAI or policy rule details from claimright.irdai_rules by rule_id.
+    parameters:
+      - name: rule_id
+        type: string
+        description: The rule identifier (e.g., R1, R1-ICU, R1-DB, R2, R3, R4, R5, R6, R7).
+    statement: |
+      SELECT
+        id,
+        title,
+        text,
+        source_title,
+        source_url,
+        status
+      FROM `claimright-aviti.claimright.irdai_rules`
+      WHERE id = @rule_id
+
+toolsets:
+  claimright:
+    - get_case_findings
+    - insurer_track_record
+    - explain_rule

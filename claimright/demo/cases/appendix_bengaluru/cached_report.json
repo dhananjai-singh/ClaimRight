@@ -1,0 +1,182 @@
+{
+  "report": {
+    "case_id": "appendix_bengaluru",
+    "insurer_name": "Demo Suraksha Health Insurance Ltd",
+    "claim_number": "DSH/CL/2026/087640",
+    "patient_name": "Arjun Rao",
+    "hospital_name": "Demo Lakeview Hospital, Bengaluru",
+    "amount_claimed": 97200.0,
+    "amount_approved": 83700.0,
+    "total_deducted": 13500.0,
+    "recoverable": 0.0,
+    "to_clarify": 0.0,
+    "findings": [
+      {
+        "rule_id": "R2",
+        "verdict": "looks_right",
+        "title": "Consumables - gloves, syringes (non-medical)",
+        "amount": 3000.0,
+        "deduction_index": 0,
+        "why": "Commonly excluded non-medical item, and your policy has no consumables benefit.",
+        "rule_ids_cited": [
+          "R2"
+        ]
+      },
+      {
+        "rule_id": "R2",
+        "verdict": "looks_right",
+        "title": "Attendant food (non-medical)",
+        "amount": 1200.0,
+        "deduction_index": 1,
+        "why": "Commonly excluded non-medical item, and your policy has no consumables benefit.",
+        "rule_ids_cited": [
+          "R2"
+        ]
+      },
+      {
+        "rule_id": "R6",
+        "verdict": "looks_right",
+        "title": "Co-pay",
+        "amount": 9300.0,
+        "deduction_index": null,
+        "why": "10% co-pay as per your policy.",
+        "rule_ids_cited": []
+      },
+      {
+        "rule_id": "R5",
+        "verdict": "looks_right",
+        "title": "Settlement adds up",
+        "amount": 0.0,
+        "deduction_index": null,
+        "why": "Claimed − deductions − co-pay = ₹83,700, matching the approved amount.",
+        "rule_ids_cited": []
+      }
+    ],
+    "explanations_en": {
+      "0": "The deduction of ₹3,000 for non-medical items like gloves and syringes is correct as your policy does not cover consumables.",
+      "1": "The cut of ₹1,200 for attendant food is correct because non-medical items are excluded under your policy.",
+      "2": "The ₹9,300 deduction for co-pay is correct as your policy requires a 10% co-pay.",
+      "3": "The calculation with ₹0 difference is correct, and the remaining amount of ₹83,700 matches your approved claim."
+    },
+    "explanations_hi": {
+      "0": "दस्ताने और सिरिंज जैसे सामान के लिए काटे गए ₹3,000 सही हैं, क्योंकि आपकी पॉलिसी में यह खर्च शामिल नहीं है।",
+      "1": "मरीज के मददगार के खाने के लिए काटे गए ₹1,200 सही हैं, क्योंकि आपकी पॉलिसी में गैर-चिकित्सीय खर्च शामिल नहीं होते।",
+      "2": "को-पे के ₹9,300 की कटौती सही है, क्योंकि आपकी पॉलिसी के नियमों के अनुसार 10% को-पे लागू होता है।",
+      "3": "₹0 के अंतर के साथ यह पूरा हिसाब बिल्कुल सही है, और बचा हुआ ₹83,700 आपके पास हुए क्लेम के बराबर है।"
+    },
+    "escalation": [
+      {
+        "id": "E1",
+        "step": "Complaint to the insurer's Grievance Redressal Officer",
+        "days_after_previous": 0,
+        "text": "Insurers must resolve a complaint within 14 days, with reasons referring to the policy terms.",
+        "source_title": "IRDAI Master Circular on Protection of Policyholders' Interests, 5 Sep 2024 (as reported)",
+        "source_url": "https://www.outlookmoney.com/insurance/robust-grievance-redressal-and-more-whats-in-irdais-latest-master-circular-for-the-policyholders",
+        "status": "press",
+        "date": "2026-11-19"
+      },
+      {
+        "id": "E2",
+        "step": "Escalate on Bima Bharosa (IRDAI's grievance portal) if there's no reply or you disagree",
+        "days_after_previous": 14,
+        "text": "Register the unresolved complaint on bimabharosa.irdai.gov.in.",
+        "source_title": "Bima Bharosa portal",
+        "source_url": "https://bimabharosa.irdai.gov.in/",
+        "status": "verified",
+        "date": "2026-12-03"
+      },
+      {
+        "id": "E3",
+        "step": "Complaint to the Insurance Ombudsman (free)",
+        "days_after_previous": 16,
+        "text": "Usually allowed once the insurer has rejected the complaint or not replied within one month, and within one year of the insurer's reply.",
+        "source_title": "Insurance Ombudsman Rules, 2017, rule 14",
+        "source_url": "https://www.cioins.co.in/",
+        "status": "unverified",
+        "todo": "Confirm the one-month / one-year limits in the Rules text.",
+        "date": "2026-12-19"
+      }
+    ],
+    "synthetic": true
+  },
+  "docs": {
+    "bill": {
+      "hospital_name": "Demo Lakeview Hospital, Bengaluru",
+      "patient_name": "Arjun Rao",
+      "admission_date": "2026-08-21",
+      "discharge_date": "2026-08-24",
+      "days": 3,
+      "room_category": "Twin sharing room",
+      "room_rent_per_day": 4000.0,
+      "follows_differential_billing": true,
+      "lines": [
+        {
+          "description": "Room rent - twin sharing (3 days x 4,000)",
+          "category": "room",
+          "amount": 12000.0
+        },
+        {
+          "description": "Laparoscopic appendectomy - surgeon, anaesthetist, OT",
+          "category": "procedure",
+          "amount": 60000.0
+        },
+        {
+          "description": "Pharmacy - medicines",
+          "category": "pharmacy",
+          "amount": 14000.0
+        },
+        {
+          "description": "Diagnostics - ultrasound, blood tests",
+          "category": "diagnostics",
+          "amount": 7000.0
+        },
+        {
+          "description": "Consumables - gloves, syringes",
+          "category": "consumables",
+          "amount": 3000.0
+        },
+        {
+          "description": "Attendant food",
+          "category": "other",
+          "amount": 1200.0
+        }
+      ],
+      "gross_total": 97200.0,
+      "discount": 0.0,
+      "net_total": 97200.0
+    },
+    "settlement": {
+      "insurer_name": "Demo Suraksha Health Insurance Ltd",
+      "claim_number": "DSH/CL/2026/087640",
+      "settlement_date": "2026-09-10",
+      "amount_claimed": 97200.0,
+      "deductions": [
+        {
+          "description": "Consumables - gloves, syringes",
+          "category": "consumables",
+          "amount": 3000.0,
+          "reason_text": "Non-medical items - not payable",
+          "reason_type": "non_payable"
+        },
+        {
+          "description": "Attendant food",
+          "category": "other",
+          "amount": 1200.0,
+          "reason_text": "Non-medical expenses - not payable",
+          "reason_type": "non_payable"
+        }
+      ],
+      "co_pay_amount": 9300.0,
+      "amount_approved": 83700.0
+    },
+    "policy": {
+      "insurer_name": "Demo Suraksha Health Insurance Ltd",
+      "policy_number": "DSH-HF-2026-330978",
+      "sum_insured": 300000.0,
+      "room_rent_limit_per_day": 4000.0,
+      "consumables_cover": false,
+      "co_pay_percent": 10.0,
+      "sub_limits": []
+    }
+  }
+}

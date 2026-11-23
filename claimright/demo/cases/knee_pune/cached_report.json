@@ -1,0 +1,212 @@
+{
+  "report": {
+    "case_id": "knee_pune",
+    "insurer_name": "Demo Suraksha Health Insurance Ltd",
+    "claim_number": "DSH/CL/2026/098311",
+    "patient_name": "Sunita Deshpande",
+    "hospital_name": "Demo Sahyadri Orthopaedic Hospital, Pune",
+    "amount_claimed": 351500.0,
+    "amount_approved": 281500.0,
+    "total_deducted": 70000.0,
+    "recoverable": 62000.0,
+    "to_clarify": 11500.0,
+    "findings": [
+      {
+        "rule_id": "R2",
+        "verdict": "wrong",
+        "title": "Consumables - surgical gloves, drapes, bandages cut as non-payable",
+        "amount": 22000.0,
+        "deduction_index": 0,
+        "why": "Your policy has a consumables benefit, so this should be paid.",
+        "rule_ids_cited": [
+          "R2"
+        ]
+      },
+      {
+        "rule_id": "R6",
+        "verdict": "wrong",
+        "title": "Sub-limit applied on Knee implant",
+        "amount": 40000.0,
+        "deduction_index": 1,
+        "why": "Your policy wording has no sub-limit for this.",
+        "rule_ids_cited": [
+          "R6"
+        ]
+      },
+      {
+        "rule_id": "R4",
+        "verdict": "ask",
+        "title": "Physiotherapy sessions cut with no reason",
+        "amount": 8000.0,
+        "deduction_index": 2,
+        "why": "No reason was given. The insurer must explain this deduction in writing.",
+        "rule_ids_cited": [
+          "R4"
+        ]
+      },
+      {
+        "rule_id": "R5",
+        "verdict": "looks_right",
+        "title": "Settlement adds up",
+        "amount": 0.0,
+        "deduction_index": null,
+        "why": "Claimed − deductions − co-pay = ₹2,81,500, matching the approved amount.",
+        "rule_ids_cited": []
+      },
+      {
+        "rule_id": "R3",
+        "verdict": "ask",
+        "title": "Hospital discount on the cut portion",
+        "amount": 3500.0,
+        "deduction_index": null,
+        "why": "The hospital gave a ₹18,500 discount on a ₹3,70,000 bill. Your proportional share on the ₹70,000 that was cut is about ₹3,500. Ask the insurer to show the discount was passed on to you.",
+        "rule_ids_cited": []
+      }
+    ],
+    "explanations_en": {
+      "0": "The deduction of ₹22,000 for consumables is incorrect because your policy covers them. You can claim this money back from the insurer.",
+      "1": "The ₹40,000 deduction using a knee implant sub-limit is wrong, as your policy has no such limit. You can claim this money back.",
+      "2": "A cut of ₹8,000 for physiotherapy was made without any reason. You should ask the insurer to give a written explanation for this deduction.",
+      "3": "The math for the settlement of ₹0 deduction adds up properly, with the approved amount matching ₹2,81,500. This cut is correct.",
+      "4": "Hospital gave a ₹18,500 discount on the ₹3,70,000 bill, so your share on the cut ₹70,000 is ₹3,500. You should ask the insurer for written proof that this discount was passed on to you."
+    },
+    "explanations_hi": {
+      "0": "कंज्यूमेबल्स के काटे गए ₹22,000 गलत हैं क्योंकि आपकी पॉलिसी में यह कवर है। आप यह पैसे बीमा कंपनी से वापस मांग सकते हैं।",
+      "1": "घुटने के इम्प्लांट पर सब-लिमिट लगाकर काटे गए ₹40,000 गलत हैं, क्योंकि आपकी पॉलिसी में ऐसी कोई सीमा नहीं है। आप यह पैसे वापस ले सकते हैं।",
+      "2": "फिजियोथेरेपी के ₹8,000 बिना किसी कारण के काट लिए गए हैं। आपको बीमा कंपनी से इसका लिखित कारण मांगना चाहिए।",
+      "3": "कटौती के ₹0 का हिसाब बिल्कुल सही बैठता है और यह स्वीकृत ₹2,81,500 से पूरी तरह मेल खाता है। यह कटौती बिल्कुल सही है।",
+      "4": "अस्पताल ने ₹3,70,000 के बिल पर ₹18,500 की छूट दी थी, जिसमें से काटे गए ₹70,000 पर आपका हिस्सा ₹3,500 बनता है। आपको बीमा कंपनी से लिखित में पूछना चाहिए कि क्या यह छूट आपको मिली है।"
+    },
+    "escalation": [
+      {
+        "id": "E1",
+        "step": "Complaint to the insurer's Grievance Redressal Officer",
+        "days_after_previous": 0,
+        "text": "Insurers must resolve a complaint within 14 days, with reasons referring to the policy terms.",
+        "source_title": "IRDAI Master Circular on Protection of Policyholders' Interests, 5 Sep 2024 (as reported)",
+        "source_url": "https://www.outlookmoney.com/insurance/robust-grievance-redressal-and-more-whats-in-irdais-latest-master-circular-for-the-policyholders",
+        "status": "press",
+        "date": "2026-11-19"
+      },
+      {
+        "id": "E2",
+        "step": "Escalate on Bima Bharosa (IRDAI's grievance portal) if there's no reply or you disagree",
+        "days_after_previous": 14,
+        "text": "Register the unresolved complaint on bimabharosa.irdai.gov.in.",
+        "source_title": "Bima Bharosa portal",
+        "source_url": "https://bimabharosa.irdai.gov.in/",
+        "status": "verified",
+        "date": "2026-12-03"
+      },
+      {
+        "id": "E3",
+        "step": "Complaint to the Insurance Ombudsman (free)",
+        "days_after_previous": 16,
+        "text": "Usually allowed once the insurer has rejected the complaint or not replied within one month, and within one year of the insurer's reply.",
+        "source_title": "Insurance Ombudsman Rules, 2017, rule 14",
+        "source_url": "https://www.cioins.co.in/",
+        "status": "unverified",
+        "todo": "Confirm the one-month / one-year limits in the Rules text.",
+        "date": "2026-12-19"
+      }
+    ],
+    "synthetic": true
+  },
+  "docs": {
+    "bill": {
+      "hospital_name": "Demo Sahyadri Orthopaedic Hospital, Pune",
+      "patient_name": "Sunita Deshpande",
+      "admission_date": "2026-09-14",
+      "discharge_date": "2026-09-19",
+      "days": 5,
+      "room_category": "Private room",
+      "room_rent_per_day": 6000.0,
+      "follows_differential_billing": true,
+      "lines": [
+        {
+          "description": "Room rent - private (5 days x 6,000)",
+          "category": "room",
+          "amount": 30000.0
+        },
+        {
+          "description": "Surgeon, anaesthetist and OT charges - total knee replacement",
+          "category": "procedure",
+          "amount": 120000.0
+        },
+        {
+          "description": "Knee implant (cemented, right knee)",
+          "category": "implants",
+          "amount": 140000.0
+        },
+        {
+          "description": "Pharmacy - medicines",
+          "category": "pharmacy",
+          "amount": 35000.0
+        },
+        {
+          "description": "Consumables - surgical gloves, drapes, bandages",
+          "category": "consumables",
+          "amount": 22000.0
+        },
+        {
+          "description": "Diagnostics - X-ray, blood tests, ECG",
+          "category": "diagnostics",
+          "amount": 15000.0
+        },
+        {
+          "description": "Physiotherapy sessions",
+          "category": "other",
+          "amount": 8000.0
+        }
+      ],
+      "gross_total": 370000.0,
+      "discount": 18500.0,
+      "net_total": 351500.0
+    },
+    "settlement": {
+      "insurer_name": "Demo Suraksha Health Insurance Ltd",
+      "claim_number": "DSH/CL/2026/098311",
+      "settlement_date": "2026-10-03",
+      "amount_claimed": 351500.0,
+      "deductions": [
+        {
+          "description": "Consumables - surgical gloves, drapes, bandages",
+          "category": "consumables",
+          "amount": 22000.0,
+          "reason_text": "Non-medical items - not payable",
+          "reason_type": "non_payable"
+        },
+        {
+          "description": "Knee implant",
+          "category": "implants",
+          "amount": 40000.0,
+          "reason_text": "Implant capped as per sub-limit",
+          "reason_type": "sub_limit"
+        },
+        {
+          "description": "Physiotherapy sessions",
+          "category": "other",
+          "amount": 8000.0,
+          "reason_text": "-",
+          "reason_type": "no_reason"
+        }
+      ],
+      "co_pay_amount": 0.0,
+      "amount_approved": 281500.0
+    },
+    "policy": {
+      "insurer_name": "Demo Suraksha Health Insurance Ltd",
+      "policy_number": "DSH-HF-2026-551204",
+      "sum_insured": 1000000.0,
+      "room_rent_limit_per_day": 6000.0,
+      "consumables_cover": true,
+      "co_pay_percent": 0.0,
+      "sub_limits": [
+        {
+          "name": "Cataract (per eye)",
+          "limit": 50000.0
+        }
+      ]
+    }
+  }
+}

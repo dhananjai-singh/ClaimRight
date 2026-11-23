@@ -1,0 +1,1067 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Anton&family=IBM+Plex+Mono:wght@400;500;600&family=Noto+Sans+Devanagari:wght@400;500;600;700;800&display=swap"><script src="claimright-data.js"></script><script src="claimright-api.js"></script><style>body{margin:0;background:#e4e0d6;-webkit-font-smoothing:antialiased}a{color:#0f2a4a}a:hover{color:#15803d}button{font-family:inherit}textarea,input{font-family:Inter,'Noto Sans Devanagari',sans-serif}
+/* Hosted app: fit the phone frame to short laptop screens, and go full-screen on real phones. */
+@media (min-width:501px) and (max-height:920px){div[style*="padding: 28px 16px"]{padding:12px 16px!important}div[style*="width: 390px; height: 844px"]{height:calc(100vh - 24px)!important}}
+@media (max-width:500px){div[style*="padding: 28px 16px"]{padding:0!important;min-height:100dvh!important}div[style*="width: 390px; height: 844px"]{width:100vw!important;height:100dvh!important;border-radius:0!important;box-shadow:none!important}div[style^="height: 36px"]{display:none!important}}</style></helmet>
+<div style="min-height:100vh;display:flex;align-items:center;justify-content:center;padding:28px 16px;box-sizing:border-box;font-family:Inter,'Noto Sans Devanagari',sans-serif;color:#0f2a4a">
+<div style="width:390px;height:844px;flex:none;border-radius:40px;overflow:hidden;position:relative;display:flex;flex-direction:column;background:#f6f3ec;box-shadow:0 0 0 8px #1b1d22,0 30px 60px rgba(0,0,0,.25)">
+<input type="file" ref="{{ fileRef }}" onChange="{{ onFile }}" style="display:none">
+<div style="height:36px;flex:none;display:flex;align-items:center;justify-content:space-between;padding:0 26px;font:600 13px Inter;background:{{ sbBg }};color:{{ sbFg }}"><span>9:41</span><span style="display:flex;gap:4px"><span style="width:14px;height:9px;border-radius:2px;background:currentColor"></span><span style="width:20px;height:9px;border-radius:2px;border:1.5px solid currentColor;box-sizing:border-box"></span></span></div>
+
+<div style="flex:1;min-height:0;display:flex;flex-direction:column;position:relative">
+
+<!-- LANGUAGE -->
+<sc-if value="{{ is.lang }}" hint-placeholder-val="{{ true }}">
+<div data-screen-label="Language" style="flex:1;min-height:0;display:flex;flex-direction:column;padding:0 20px">
+<div style="height:52px;flex:none;display:flex;align-items:center;gap:10px;border-bottom:3px solid #0f2a4a"><div style="width:28px;height:28px;background:#16a34a;border-radius:7px;display:flex;align-items:center;justify-content:center"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" style="stroke-width:3.4;stroke-linecap:round;stroke-linejoin:round"><path d="M5 12.5l4.5 4.5L19 7"></path></svg></div><span style="font:22px Anton,sans-serif;letter-spacing:.04em">CLAIMRIGHT</span></div>
+<div style="flex:1;display:flex;flex-direction:column;justify-content:center;gap:26px">
+<div><div style="font:68px/0.98 Anton,sans-serif">CHOOSE YOUR LANGUAGE</div><div style="font:700 30px/1.6 'Noto Sans Devanagari',sans-serif;margin-top:6px">अपनी भाषा चुनें</div></div>
+<div style="display:grid;gap:14px">
+<button onClick="{{ pickEn }}" style="height:112px;border:3px solid #0f2a4a;background:#fff;color:#0f2a4a;padding:0 22px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;text-align:left" style-hover="background:#0f2a4a;color:#fff"><span style="display:flex;flex-direction:column;gap:4px"><span style="font:46px/1 Anton,sans-serif">ENGLISH</span><span style="font:500 14px Inter">Continue in English</span></span><span style="font:30px Anton,sans-serif;color:#15803d">→</span></button>
+<button onClick="{{ pickHi }}" style="height:112px;border:3px solid #0f2a4a;background:#fff;color:#0f2a4a;padding:0 22px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;text-align:left" style-hover="background:#0f2a4a;color:#fff"><span style="display:flex;flex-direction:column;gap:2px"><span style="font:800 40px/1.3 'Noto Sans Devanagari',sans-serif">हिंदी</span><span style="font:500 14px/1.6 'Noto Sans Devanagari',sans-serif">हिंदी में आगे बढ़ें</span></span><span style="font:30px Anton,sans-serif;color:#15803d">→</span></button>
+</div>
+</div>
+<div style="padding:12px 0 6px;font:13px/1.6 Inter,'Noto Sans Devanagari';color:#475569;text-align:center">Change it any time in Settings · सेटिंग्स में कभी भी बदलें</div>
+</div>
+</sc-if>
+
+<!-- ONBOARDING -->
+<sc-if value="{{ is.onb }}" hint-placeholder-val="{{ false }}">
+<div data-screen-label="Onboarding" style="flex:1;min-height:0;display:flex;flex-direction:column">
+<div style="height:52px;flex:none;margin:0 20px;display:flex;align-items:center;border-bottom:3px solid #0f2a4a"><span style="flex:1;font:20px Anton,sans-serif"><span style="color:#15803d">{{ onb.n }}</span> / 03</span><button onClick="{{ finishOnb }}" style="height:44px;padding:0 4px;border:0;background:none;color:#0f2a4a;font:600 15px Inter,'Noto Sans Devanagari';text-decoration:underline;text-underline-offset:4px;cursor:pointer">{{ t.skip }}</button></div>
+<div style="flex:1;min-height:0;overflow-y:auto;padding:20px 20px 0;display:grid;gap:20px;align-content:start">
+<div style="height:290px;background:{{ onb.bg }};color:#fff;display:flex;flex-direction:column;justify-content:flex-end;padding:22px;gap:8px;box-sizing:border-box"><div style="font:{{ onb.bigFont }} Anton,sans-serif;line-height:1">{{ onb.big }}</div><div style="font:600 15px/1.5 Inter,'Noto Sans Devanagari';max-width:300px">{{ onb.bigSub }}</div></div>
+<div style="font-family:Anton,'Noto Sans Devanagari',sans-serif;font-weight:700;font-synthesis:none;text-transform:uppercase;font-size:{{ F.h2 }};line-height:{{ L.h2 }}">{{ onb.title }}</div>
+<div style="font-size:17px;line-height:{{ L.body }}">{{ onb.body }}</div>
+</div>
+<div style="flex:none;padding:12px 20px 14px;display:flex;align-items:center;gap:16px">
+<div style="display:flex;gap:6px"><sc-for list="{{ onb.dots }}" as="d" hint-placeholder-count="3"><div style="height:6px;width:{{ d.w }};background:{{ d.bg }}"></div></sc-for></div>
+<button onClick="{{ onb.next }}" style="flex:1;height:60px;border:0;background:#0f2a4a;color:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 22px;font-family:Anton,'Noto Sans Devanagari',sans-serif;font-weight:700;font-synthesis:none;font-size:22px;cursor:pointer">{{ onb.nextLabel }}<span style="color:#4ade80">→</span></button>
+</div>
+</div>
+</sc-if>
+
+<!-- HOME -->
+<sc-if value="{{ is.home }}" hint-placeholder-val="{{ false }}">
+<div data-screen-label="Home" style="flex:1;min-height:0;display:flex;flex-direction:column">
+<div style="height:52px;flex:none;margin:0 20px;display:flex;align-items:center;gap:10px;border-bottom:3px solid #0f2a4a"><div style="width:28px;height:28px;background:#16a34a;border-radius:7px;display:flex;align-items:center;justify-content:center"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" style="stroke-width:3.4;stroke-linecap:round;stroke-linejoin:round"><path d="M5 12.5l4.5 4.5L19 7"></path></svg></div><span style="flex:1;font:22px Anton,sans-serif;letter-spacing:.04em">CLAIMRIGHT</span>
+<div style="height:34px;display:flex;border:2px solid #0f2a4a;box-sizing:border-box"><button onClick="{{ setEn }}" style="padding:0 11px;border:0;cursor:pointer;font:700 13px Inter;background:{{ tg.enBg }};color:{{ tg.enFg }}">EN</button><button onClick="{{ setHi }}" style="padding:0 11px;border:0;cursor:pointer;font:700 14px 'Noto Sans Devanagari';background:{{ tg.hiBg }};color:{{ tg.hiFg }}">हिं</button></div></div>
+<div style="flex:1;min-height:0;overflow-y:auto;padding:18px 20px 24px;display:grid;gap:18px;align-content:start">
+<div style="font-family:Anton,'Noto Sans Devanagari',sans-serif;font-weight:700;font-synthesis:none;text-transform:uppercase;font-size:{{ F.h1 }};line-height:{{ L.h1 }}">{{ t.homeH1 }} <span style="background:#15803d;color:#fff;padding:0 6px;display:inline-block">{{ t.homeH1b }}</span></div>
+<div style="font-size:17px;line-height:{{ L.body }}">{{ t.homeBody }}</div>
+<div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px">
+<div style="border-top:2px solid #0f2a4a;padding-top:8px;display:flex;flex-direction:column;gap:2px"><span style="font:20px Anton,sans-serif">01</span><span style="font-size:13px;line-height:1.4;font-weight:500">{{ t.doc1 }}</span></div>
+<div style="border-top:2px solid #0f2a4a;padding-top:8px;display:flex;flex-direction:column;gap:2px"><span style="font:20px Anton,sans-serif">02</span><span style="font-size:13px;line-height:1.4;font-weight:500">{{ t.doc2 }}</span></div>
+<div style="border-top:2px solid #0f2a4a;padding-top:8px;display:flex;flex-direction:column;gap:2px"><span style="font:20px Anton,sans-serif">03</span><span style="font-size:13px;line-height:1.4;font-weight:500">{{ t.doc3 }}</span></div>
+</div>
+<button onClick="{{ startUpload }}" style="min-height:64px;border:0;background:#0f2a4a;color:#fff;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:0 22px;font-family:Anton,'Noto Sans Devanagari',sans-serif;font-weight:700;font-synthesis:none;font-size:21px;letter-spacing:.02em;cursor:pointer;text-align:left" style-hover="background:#15803d">{{ t.checkCta }}<span style="color:#4ade80">→</span></button>
+<div style="border:1.5px dashed #475569;padding:10px 12px;font-size:13px;line-height:1.5;color:#334155">{{ t.demoWarn }}</div>
+<div style="font-size:12px;font-weight:700;letter-spacing:.12em;padding:8px 0;border-bottom:3px solid #0f2a4a;margin-top:6px">{{ t.myCases }}</div>
+<sc-if value="{{ hasCases }}" hint-placeholder-val="{{ false }}">
+<div style="display:grid;margin-top:-18px">
+<sc-for list="{{ myCases }}" as="c" hint-placeholder-count="1">
+<button onClick="{{ c.open }}" style="min-height:64px;display:flex;align-items:center;gap:12px;border:0;border-bottom:1px solid #0f2a4a;background:none;padding:10px 0;text-align:left;cursor:pointer;color:#0f2a4a" style-hover="background:#ece7dc">
+<span style="flex:1;display:flex;flex-direction:column;gap:2px"><span style="font-size:16px;font-weight:600">{{ c.title }}</span><span style="font-size:13px;color:#15803d;font-weight:600">{{ c.stageLabel }}</span></span>
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0f2a4a" style="stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round"><path d="M9 6l6 6-6 6"></path></svg>
+</button>
+</sc-for>
+</div>
+</sc-if>
+<sc-if value="{{ noCases }}" hint-placeholder-val="{{ true }}"><div style="font-size:14px;line-height:1.6;color:#475569;margin-top:-6px">{{ t.noCases }}</div></sc-if>
+</div>
+</div>
+</sc-if>
+
+<!-- UPLOAD -->
+<sc-if value="{{ is.upload }}" hint-placeholder-val="{{ false }}">
+<div data-screen-label="Upload" style="flex:1;min-height:0;display:flex;flex-direction:column">
+<div style="height:52px;flex:none;margin:0 20px;display:flex;align-items:center;gap:6px;border-bottom:3px solid #0f2a4a"><button onClick="{{ upBack }}" style="width:44px;height:44px;margin-left:-10px;border:0;background:none;cursor:pointer;display:flex;align-items:center;justify-content:center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0f2a4a" style="stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round"><path d="M19 12H5M11 6l-6 6 6 6"></path></svg></button><span style="flex:1;font-family:Anton,'Noto Sans Devanagari',sans-serif;font-weight:700;font-synthesis:none;font-size:20px">{{ t.upTitle }}</span></div>
+<div style="flex:none;margin:14px 20px 0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px">
+<sc-for list="{{ up.steps }}" as="s" hint-placeholder-count="3">
+<button onClick="{{ s.go }}" style="border:0;background:none;padding:0;text-align:left;cursor:pointer;display:flex;flex-direction:column;gap:6px;color:#0f2a4a"><span style="height:5px;width:100%;background:{{ s.bar }}"></span><span style="display:flex;gap:6px;align-items:baseline"><span style="font:16px Anton,sans-serif;color:{{ s.numColor }}">{{ s.num }}</span><span style="font-size:11px;font-weight:700;letter-spacing:.06em;color:{{ s.labelColor }}">{{ s.label }}</span></span></button>
+</sc-for>
+</div>
+<div style="flex:1;min-height:0;overflow-y:auto;padding:18px 20px 20px;display:grid;gap:16px;align-content:start">
+<div style="font-family:Anton,'Noto Sans Devanagari',sans-serif;font-weight:700;font-synthesis:none;text-transform:uppercase;font-size:{{ F.h2 }};line-height:{{ L.h2 }}">{{ up.docTitle }}</div>
+<div style="font-size:16px;line-height:{{ L.body }};color:#334155;margin-top:-6px">{{ up.docHelp }}</div>
+<sc-if value="{{ up.hasFile }}" hint-placeholder-val="{{ false }}">
+<div style="background:#fff;border:2px solid #0f2a4a;padding:14px;display:flex;gap:14px;align-items:center">
+<sc-if value="{{ up.isImg }}" hint-placeholder-val="{{ false }}"><div style="width:72px;height:96px;flex:none;border:1px solid #d6d0c3;background-size:cover;background-position:center;background-image:{{ up.imgBg }}"></div></sc-if>
+<sc-if value="{{ up.isDoc }}" hint-placeholder-val="{{ true }}"><div style="width:72px;height:96px;flex:none;background:repeating-linear-gradient(#fff 0 9px,#e4e0d6 9px 10px);border:1px solid #d6d0c3;display:flex;align-items:flex-end;justify-content:center;padding-bottom:8px;box-sizing:border-box"><span style="background:#b91c1c;color:#fff;font:700 10px Inter;padding:2px 5px">PDF</span></div></sc-if>
+<div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:4px"><div style="font-size:15px;font-weight:600;overflow-wrap:anywhere">{{ up.file.name }}</div><div style="font-size:13px;color:#475569;display:flex;align-items:center;gap:6px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#15803d" style="stroke-width:3;stroke-linecap:round;stroke-linejoin:round"><path d="M5 12.5l4.5 4.5L19 7"></path></svg>{{ up.file.size }}</div>
+<div style="display:flex;gap:16px;margin-top:2px"><button onClick="{{ up.replace }}" style="min-height:40px;padding:0;border:0;background:none;font:600 14px Inter,'Noto Sans Devanagari';color:#0f2a4a;text-decoration:underline;text-underline-offset:3px;cursor:pointer">{{ t.replace }}</button><button onClick="{{ up.remove }}" style="min-height:40px;padding:0;border:0;background:none;font:600 14px Inter,'Noto Sans Devanagari';color:#b91c1c;text-decoration:underline;text-underline-offset:3px;cursor:pointer">{{ t.remove }}</button></div></div>
+</div>
+</sc-if>
+<sc-if value="{{ up.noFile }}" hint-placeholder-val="{{ true }}">
+<div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px">
+<button onClick="{{ up.camera }}" style="height:100px;border:2px solid #0f2a4a;background:#fff;color:#0f2a4a;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;cursor:pointer" style-hover="background:#0f2a4a;color:#fff"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="stroke-width:1.8;stroke-linejoin:round"><path d="M4 8h3l2-3h6l2 3h3v11H4z"></path><circle cx="12" cy="13" r="3.5"></circle></svg><span style="font-family:Anton,'Noto Sans Devanagari',sans-serif;font-weight:700;font-synthesis:none;font-size:15px">{{ t.camera }}</span></button>
+<button onClick="{{ up.gallery }}" style="height:100px;border:2px solid #0f2a4a;background:#fff;color:#0f2a4a;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;cursor:pointer" style-hover="background:#0f2a4a;color:#fff"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="stroke-width:1.8;stroke-linejoin:round"><rect x="3" y="4" width="18" height="16"></rect><path d="M3 16l5-5 4 4 3-3 6 6"></path></svg><span style="font-family:Anton,'Noto Sans Devanagari',sans-serif;font-weight:700;font-synthesis:none;font-size:15px">{{ t.gallery }}</span></button>
+<button onClick="{{ up.pdf }}" style="height:100px;border:2px solid #0f2a4a;background:#fff;color:#0f2a4a;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;cursor:pointer" style-hover="background:#0f2a4a;color:#fff"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="stroke-width:1.8;stroke-linejoin:round"><path d="M6 3h8l4 4v14H6z"></path><path d="M14 3v4h4"></path></svg><span style="font-family:Anton,'Noto Sans Devanagari',sans-serif;font-weight:700;font-synthesis:none;font-size:15px">{{ t.pdf }}</span></button>
+</div>
+
+</sc-if>
+<sc-if value="{{ up.err }}" hint-placeholder-val="{{ false }}">
+<div style="border:2px solid #b91c1c;background:#fdecec;padding:14px;display:flex;gap:12px"><div style="width:26px;height:26px;flex:none;background:#b91c1c;display:flex;align-items:center;justify-content:center"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" style="stroke-width:3.4;stroke-linecap:round"><path d="M6 6l12 12M18 6L6 18"></path></svg></div><div style="display:flex;flex-direction:column;gap:4px"><div style="font-size:16px;font-weight:700;color:#991b1b">{{ t.tooBigT }}</div><div style="font-size:14px;line-height:1.5;color:#7f1d1d">{{ t.tooBigB }}</div></div></div>
+</sc-if>
+<div style="border-top:3px solid #0f2a4a">
+<button onClick="{{ up.toggleTips }}" style="width:100%;min-height:52px;padding:0;border:0;background:none;display:flex;align-items:center;justify-content:space-between;font:700 12px Inter,'Noto Sans Devanagari';letter-spacing:.1em;color:#0f2a4a;cursor:pointer">{{ t.tipsT }}<span style="font:22px Anton,sans-serif">{{ up.tipsSign }}</span></button>
+<sc-if value="{{ up.tips }}" hint-placeholder-val="{{ false }}"><div style="display:grid;gap:10px;padding-bottom:6px"><sc-for list="{{ t.tips }}" as="tip" hint-placeholder-count="4"><div style="display:flex;gap:10px;font-size:15px;line-height:1.5"><span style="width:6px;height:6px;background:#15803d;flex:none;margin-top:9px"></span>{{ tip }}</div></sc-for></div></sc-if>
+</div>
+<div style="border:1.5px dashed #475569;padding:10px 12px;font-size:13px;line-height:1.5;color:#334155">{{ t.demoWarn }}</div>
+
+</div>
+<div style="flex:none;padding:12px 20px 12px;border-top:1px solid #d6d0c3"><button onClick="{{ up.next }}" style="width:100%;min-height:60px;border:0;background:#0f2a4a;color:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 22px;font-family:Anton,'Noto Sans Devanagari',sans-serif;font-weight:700;font-synthesis:none;font-size:20px;cursor:pointer;opacity:{{ up.btnOpacity }}">{{ up.nextLabel }}<span style="color:#4ade80">→</span></button></div>
+</div>
+</sc-if>
+
+<!-- CHECKING -->
+<sc-if value="{{ is.checking }}" hint-placeholder-val="{{ false }}">
+<div data-screen-label="Checking" style="flex:1;min-height:0;display:flex;flex-direction:column">
+<div style="height:52px;flex:none;margin:0 20px;display:flex;align-items:center;gap:6px;border-bottom:3px solid #0f2a4a"><button onClick="{{ back }}" style="width:44px;height:44px;margin-left:-10px;border:0;background:none;cursor:pointer;display:flex;align-items:center;justify-content:center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0f2a4a" style="stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round"><path d="M19 12H5M11 6l-6 6 6 6"></path></svg></button><span style="flex:1;font:20px Anton,sans-serif;letter-spacing:.04em">CLAIMRIGHT</span><span style="font:20px Anton,sans-serif;color:#15803d">{{ chk.elapsed }}</span></div>
+<sc-if value="{{ chk.running }}" hint-placeholder-val="{{ true }}">
+<div style="flex:1;min-height:0;overflow-y:auto;padding:22px 20px;display:grid;gap:20px;align-content:start">
+<div style="font-size:12px;font-weight:700;letter-spacing:.12em">{{ t.chkLabel }}</div>
+<div style="font-family:Anton,'Noto Sans Devanagari',sans-serif;font-weight:700;font-synthesis:none;text-transform:uppercase;font-size:{{ F.h1 }};line-height:{{ L.h1 }};margin-top:-10px">{{ t.chkH }}</div>
+<div style="height:8px;background:#e4e0d6"><div style="height:100%;background:#15803d;transition:width .25s linear;width:{{ chk.pct }}"></div></div>
+<div style="font-size:13px;line-height:1.5;color:#475569;margin-top:-12px">{{ chk.note }}</div>
+<div style="display:grid">
+<sc-for list="{{ chk.steps }}" as="s" hint-placeholder-count="3">
+<div style="display:flex;gap:14px;align-items:flex-start;padding:14px 0;border-bottom:1px solid #0f2a4a">
+<div style="width:32px;height:32px;flex:none;box-sizing:border-box;display:flex;align-items:center;justify-content:center;font:16px Anton,sans-serif;background:{{ s.bg }};color:{{ s.fg }};border:{{ s.border }}">{{ s.mark }}</div>
+<div style="display:flex;flex-direction:column;gap:3px"><div style="font-size:17px;font-weight:600;color:{{ s.titleColor }}">{{ s.title }}</div><div style="font-size:14px;line-height:1.5;color:#475569">{{ s.sub }}</div></div>
+</div>
+</sc-for>
+</div>
+<div style="background:#0f2a4a;color:#fff;padding:18px;display:flex;flex-direction:column;gap:8px;min-height:120px;box-sizing:border-box"><div style="font-size:12px;font-weight:700;letter-spacing:.12em;color:#4ade80">{{ t.waitTip }}</div><div style="font-size:16px;line-height:{{ L.body }}">{{ chk.tip }}</div></div>
+</div>
+</sc-if>
+<sc-if value="{{ chk.err }}" hint-placeholder-val="{{ false }}">
+<div style="flex:1;min-height:0;padding:28px 20px;display:flex;flex-direction:column;gap:18px">
+<div style="width:56px;height:56px;background:#b91c1c;display:flex;align-items:center;justify-content:center"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" style="stroke-width:3;stroke-linecap:round"><path d="M6 6l12 12M18 6L6 18"></path></svg></div>
+<div style="font-family:Anton,'Noto Sans Devanagari',sans-serif;font-weight:700;font-synthesis:none;text-transform:uppercase;font-size:{{ F.h1 }};line-height:{{ L.h1 }}">{{ t.errH }}</div>
+<div style="font-size:17px;line-height:{{ L.body }};color:#334155">{{ t.errB }}</div>
+<sc-if value="{{ chk.hasMsg }}" hint-placeholder-val="{{ false }}"><div style="font:500 12px/1.5 'IBM Plex Mono',monospace;color:#7f1d1d;overflow-wrap:anywhere;border-left:3px solid #b91c1c;padding-left:10px">{{ chk.msg }}</div></sc-if>
+<div style="flex:1"></div>
+<button onClick="{{ chk.retry }}" style="min-height:60px;border:0;background:#0f2a4a;color:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 22px;font-family:Anton,'Noto Sans Devanagari',sans-serif;font-weight:700;font-synthesis:none;font-size:20px;cursor:pointer">{{ t.retry }}<span style="color:#4ade80">↻</span></button>
+<button onClick="{{ goHome }}" style="min-height:48px;border:0;background:none;font:600 15px Inter,'Noto Sans Devanagari';color:#0f2a4a;text-decoration:underline;text-underline-offset:4px;cursor:pointer">{{ t.backHome }}</button>
+</div>
+</sc-if>
+</div>
+</sc-if>
+
+<!-- REPORT -->
+<sc-if value="{{ is.report }}" hint-placeholder-val="{{ false }}">
+<div data-screen-label="Audit report" style="flex:1;min-height:0;display:flex;flex-direction:column;position:relative">
+<div style="flex:none;background:#15803d;color:#fff;padding:0 20px 20px">
+<div style="height:50px;display:flex;align-items:center;gap:8px;margin-left:-10px">
+<button onClick="{{ back }}" style="width:44px;height:44px;border:0;background:none;cursor:pointer;display:flex;align-items:center;justify-content:center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" style="stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round"><path d="M19 12H5M11 6l-6 6 6 6"></path></svg></button>
+<span style="flex:1;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase">{{ r.caseShort }}</span>
+<sc-if value="{{ r.isDemo }}" hint-placeholder-val="{{ false }}"><span style="font-size:10px;font-weight:700;letter-spacing:.06em;border:1.5px dashed #fff;padding:3px 6px">{{ t.demoBadge }}</span></sc-if>
+<div style="height:32px;display:flex;border:2px solid #fff;box-sizing:border-box"><button onClick="{{ setEn }}" style="padding:0 9px;border:0;cursor:pointer;font:700 12px Inter;background:{{ tgw.enBg }};color:{{ tgw.enFg }}">EN</button><button onClick="{{ setHi }}" style="padding:0 9px;border:0;cursor:pointer;font:700 13px 'Noto Sans Devanagari';background:{{ tgw.hiBg }};color:{{ tgw.hiFg }}">हिं</button></div>
+</div>
+<sc-if value="{{ r.notClean }}" hint-placeholder-val="{{ true }}">
+<div style="font-size:14px;font-weight:700;letter-spacing:.1em;margin-top:6px">{{ t.claimBack }}</div>
+<div style="font:104px/1.05 Anton,sans-serif">{{ r.d.recoverable }}</div>
+<div style="font-size:15px;line-height:{{ L.body }}">{{ r.heroSub }}</div>
+</sc-if>
+<sc-if value="{{ r.clean }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;align-items:center;gap:8px;margin-top:6px"><div style="width:26px;height:26px;background:#fff;display:flex;align-items:center;justify-content:center"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#15803d" style="stroke-width:3.4;stroke-linecap:round;stroke-linejoin:round"><path d="M5 12.5l4.5 4.5L19 7"></path></svg></div><span style="font-size:14px;font-weight:700;letter-spacing:.1em">{{ t.goodNews }}</span></div>
+<div style="font-family:Anton,'Noto Sans Devanagari',sans-serif;font-weight:700;font-synthesis:none;text-transform:uppercase;font-size:{{ F.h1 }};line-height:{{ L.h1 }};margin-top:8px">{{ t.cleanH }}</div>
+<div style="font-size:15px;line-height:{{ L.body }};margin-top:6px">{{ r.cleanSub }}</div>
+</sc-if>
+</div>
+<div style="flex:1;min-height:0;overflow-y:auto;padding:16px 20px;display:grid;gap:18px;align-content:start;padding-bottom:{{ r.padBottom }}">
+<div style="font-size:13px;line-height:1.6;color:#475569">{{ r.c.patient_name }} · {{ r.c.hospital_name }}<br>{{ r.c.insurer_name }} · {{ t.claimNo }} {{ r.c.claim_number }}</div>
+<div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px">
+<div style="border-top:2px solid #0f2a4a;padding-top:8px;display:flex;flex-direction:column;gap:2px"><span style="font-size:11px;font-weight:700;letter-spacing:.08em">{{ t.claimed }}</span><span style="font:21px Anton,sans-serif">{{ r.d.amount_claimed }}</span></div>
+<div style="border-top:2px solid #0f2a4a;padding-top:8px;display:flex;flex-direction:column;gap:2px"><span style="font-size:11px;font-weight:700;letter-spacing:.08em">{{ t.approved }}</span><span style="font:21px Anton,sans-serif">{{ r.d.amount_approved }}</span></div>
+<div style="border-top:2px solid #0f2a4a;padding-top:8px;display:flex;flex-direction:column;gap:2px"><span style="font-size:11px;font-weight:700;letter-spacing:.08em">{{ t.deducted }}</span><span style="font:21px Anton,sans-serif">{{ r.d.total_deducted }}</span></div>
+</div>
+<sc-if value="{{ r.hasAskAmt }}" hint-placeholder-val="{{ false }}">
+<div style="border:2px solid #b45309;background:#fdf3e3;padding:12px 14px;display:flex;align-items:center;gap:12px"><div style="width:26px;height:26px;flex:none;background:#b45309;color:#fff;display:flex;align-items:center;justify-content:center;font:16px Anton,sans-serif">?</div><span style="flex:1;font-size:12px;font-weight:700;letter-spacing:.08em;color:#92400e">{{ t.askAbout }}</span><span style="font:24px Anton,sans-serif;color:#92400e">{{ r.d.to_clarify }}</span></div>
+</sc-if>
+<sc-if value="{{ r.hasWrong }}" hint-placeholder-val="{{ true }}">
+<div style="display:grid">
+<div style="display:flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:.1em;padding-bottom:8px;border-bottom:3px solid #0f2a4a"><span style="width:18px;height:18px;background:#b91c1c;display:flex;align-items:center;justify-content:center"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#fff" style="stroke-width:4;stroke-linecap:round"><path d="M6 6l12 12M18 6L6 18"></path></svg></span>{{ t.wrongH }}</div>
+<sc-for list="{{ r.wrong }}" as="f" hint-placeholder-count="3">
+<button onClick="{{ f.open }}" style="min-height:66px;display:flex;align-items:center;gap:12px;border:0;border-bottom:1px solid #0f2a4a;background:none;padding:10px 0;text-align:left;cursor:pointer;color:#0f2a4a" style-hover="background:#ece7dc">
+<span style="font:18px Anton,sans-serif;color:#b91c1c;width:24px">{{ f.num }}</span>
+<span style="flex:1;font-size:16px;font-weight:600;line-height:1.4">{{ f.short }}</span>
+<span style="font:24px Anton,sans-serif">{{ f.amt }}</span>
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0f2a4a" style="stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;flex:none"><path d="M9 6l6 6-6 6"></path></svg>
+</button>
+</sc-for>
+</div>
+</sc-if>
+<sc-if value="{{ r.hasAsk }}" hint-placeholder-val="{{ false }}">
+<div style="display:grid">
+<div style="display:flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:.1em;padding-bottom:8px;border-bottom:3px solid #0f2a4a"><span style="width:18px;height:18px;background:#b45309;color:#fff;display:flex;align-items:center;justify-content:center;font:12px Anton,sans-serif">?</span>{{ t.askH }}</div>
+<sc-for list="{{ r.ask }}" as="f" hint-placeholder-count="2">
+<button onClick="{{ f.open }}" style="min-height:66px;display:flex;align-items:center;gap:12px;border:0;border-bottom:1px solid #0f2a4a;background:none;padding:10px 0;text-align:left;cursor:pointer;color:#0f2a4a" style-hover="background:#ece7dc">
+<span style="font:18px Anton,sans-serif;color:#b45309;width:24px">{{ f.num }}</span>
+<span style="flex:1;font-size:16px;font-weight:600;line-height:1.4">{{ f.short }}</span>
+<span style="font:24px Anton,sans-serif">{{ f.amt }}</span>
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0f2a4a" style="stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;flex:none"><path d="M9 6l6 6-6 6"></path></svg>
+</button>
+</sc-for>
+</div>
+</sc-if>
+<div style="display:grid">
+<button onClick="{{ r.toggleRight }}" style="min-height:60px;display:flex;align-items:center;gap:10px;border:0;border-top:3px solid #0f2a4a;border-bottom:1px solid #0f2a4a;background:none;padding:8px 0;text-align:left;cursor:pointer;color:#0f2a4a">
+<span style="width:18px;height:18px;background:#475569;display:flex;align-items:center;justify-content:center;flex:none"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#fff" style="stroke-width:4;stroke-linecap:round;stroke-linejoin:round"><path d="M5 12.5l4.5 4.5L19 7"></path></svg></span>
+<span style="flex:1;display:flex;flex-direction:column;gap:2px"><span style="font-size:12px;font-weight:700;letter-spacing:.1em">{{ t.rightH }}</span><span style="font-size:13px;color:#475569">{{ r.rightMeta }}</span></span>
+<span style="font:24px Anton,sans-serif">{{ r.rightSign }}</span>
+</button>
+<sc-if value="{{ r.rightOpen }}" hint-placeholder-val="{{ false }}">
+<sc-for list="{{ r.right }}" as="f" hint-placeholder-count="5">
+<button onClick="{{ f.open }}" style="min-height:58px;display:flex;align-items:center;gap:12px;border:0;border-bottom:1px solid #cfc9bc;background:none;padding:8px 0;text-align:left;cursor:pointer;color:#0f2a4a" style-hover="background:#ece7dc">
+<span style="font:16px Anton,sans-serif;color:#475569;width:24px">{{ f.num }}</span>
+<span style="flex:1;font-size:15px;font-weight:500;line-height:1.4;color:#334155">{{ f.short }}</span>
+<span style="font:20px Anton,sans-serif;color:#475569">{{ f.amt }}</span>
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#475569" style="stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;flex:none"><path d="M9 6l6 6-6 6"></path></svg>
+</button>
+</sc-for>
+</sc-if>
+</div>
+<sc-if value="{{ r.hasDocs }}" hint-placeholder-val="{{ true }}"><button onClick="{{ openDocs }}" style="min-height:52px;display:flex;align-items:center;justify-content:space-between;border:0;border-bottom:1px solid #0f2a4a;background:none;padding:0;cursor:pointer;color:#0f2a4a;font:700 12px Inter,'Noto Sans Devanagari';letter-spacing:.1em">{{ t.seeDocs }}<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0f2a4a" style="stroke-width:2;stroke-linecap:round;stroke-linejoin:round"><path d="M6 3h8l4 4v14H6z"></path><path d="M14 3v4h4"></path></svg></button></sc-if>
+<sc-if value="{{ r.paid }}" hint-placeholder-val="{{ false }}">
+<div style="display:grid">
+<div style="font-size:12px;font-weight:700;letter-spacing:.1em;padding-bottom:8px;border-bottom:3px solid #0f2a4a">{{ t.nextMoves }}</div>
+<button onClick="{{ goLetter }}" style="min-height:56px;display:flex;align-items:center;gap:12px;border:0;border-bottom:1px solid #0f2a4a;background:none;padding:0;cursor:pointer;color:#0f2a4a;text-align:left"><span style="font:18px Anton,sans-serif;color:#15803d;width:24px">A</span><span style="flex:1;font-size:16px;font-weight:600">{{ t.openLetter }}</span><span style="font:20px Anton,sans-serif">→</span></button>
+<button onClick="{{ goSteps }}" style="min-height:56px;display:flex;align-items:center;gap:12px;border:0;border-bottom:1px solid #0f2a4a;background:none;padding:0;cursor:pointer;color:#0f2a4a;text-align:left"><span style="font:18px Anton,sans-serif;color:#15803d;width:24px">B</span><span style="flex:1;font-size:16px;font-weight:600">{{ t.openSteps }}</span><span style="font:20px Anton,sans-serif">→</span></button>
+</div>
+</sc-if>
+<div style="font-size:12px;line-height:{{ L.small }};color:#475569;border-top:1px solid #cfc9bc;padding-top:12px">{{ t.disclaimer }}</div>
+</div>
+<button onClick="{{ goChat }}" style="position:absolute;right:16px;height:52px;padding:0 18px 0 14px;border:2px solid #0f2a4a;background:#fff;color:#0f2a4a;display:flex;align-items:center;gap:8px;font-family:Anton,'Noto Sans Devanagari',sans-serif;font-weight:700;font-synthesis:none;font-size:17px;cursor:pointer;box-shadow:4px 4px 0 #0f2a4a;bottom:{{ r.askBottom }}" style-hover="background:#f0ece3"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="stroke-width:2.2;stroke-linejoin:round"><path d="M4 5h16v11H9l-5 4z"></path></svg>{{ t.askBtn }}</button>
+<sc-if value="{{ r.showCta }}" hint-placeholder-val="{{ true }}">
+<div style="flex:none;padding:12px 20px;background:#f6f3ec;border-top:1px solid #d6d0c3"><button onClick="{{ r.cta }}" style="width:100%;min-height:60px;border:0;background:#0f2a4a;color:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 22px;font-family:Anton,'Noto Sans Devanagari',sans-serif;font-weight:700;font-synthesis:none;font-size:21px;letter-spacing:.02em;cursor:pointer" style-hover="background:#15803d">{{ r.ctaLabel }}<span style="color:#4ade80">→</span></button></div>
+</sc-if>
+</div>
+</sc-if>
+
+<!-- CUT DETAIL -->
+<sc-if value="{{ is.cut }}" hint-placeholder-val="{{ false }}">
+<div data-screen-label="Cut detail" style="flex:1;min-height:0;display:flex;flex-direction:column">
+<div style="height:52px;flex:none;margin:0 20px;display:flex;align-items:center;border-bottom:3px solid #0f2a4a"><button onClick="{{ back }}" style="width:44px;height:44px;margin-left:-10px;border:0;background:none;cursor:pointer;display:flex;align-items:center;justify-content:center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0f2a4a" style="stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round"><path d="M19 12H5M11 6l-6 6 6 6"></path></svg></button><span style="flex:1"></span><span style="font:20px Anton,sans-serif"><span style="color:{{ cut.vColor }}">{{ cut.pos }}</span> / {{ cut.of }}</span></div>
+<div style="flex:1;min-height:0;overflow-y:auto;padding:18px 20px 20px;display:grid;gap:14px;align-content:start">
+<div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap"><span style="background:{{ cut.vColor }};color:#fff;font-size:12px;font-weight:700;letter-spacing:.1em;padding:6px 10px;white-space:nowrap">{{ cut.vLabel }}</span><span style="font:46px/1.1 Anton,sans-serif">{{ cut.amt }}</span></div>
+<div style="font-family:Anton,'Noto Sans Devanagari',sans-serif;font-weight:700;font-synthesis:none;text-transform:uppercase;font-size:{{ F.h2 }};line-height:{{ L.h2 }}">{{ cut.title }}</div>
+<div style="font-size:17px;line-height:{{ L.body }};text-wrap:pretty">{{ cut.text }}</div>
+<sc-if value="{{ cut.hasRule }}" hint-placeholder-val="{{ true }}">
+<div style="border-top:3px solid #0f2a4a;padding-top:12px;display:flex;flex-direction:column;gap:10px;margin-top:6px">
+<div style="font-size:12px;font-weight:700;letter-spacing:.1em">{{ t.ruleLbl }} {{ cut.rule.id }}</div>
+<div style="display:flex;align-items:flex-start;gap:10px"><span style="font:64px/48px Anton,sans-serif;color:#15803d;flex:none">“</span><span style="font-size:19px;line-height:{{ L.h3 }};font-weight:600">{{ cut.rule.title }}</span></div>
+<div style="font:500 13px/1.5 'IBM Plex Mono',monospace;color:#334155">{{ cut.rule.source_title }}</div>
+<div style="display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap"><span style="font-size:12px;font-weight:700;letter-spacing:.06em;padding:5px 9px;white-space:nowrap;background:{{ cut.rule.chipBg }};color:{{ cut.rule.chipFg }};border:{{ cut.rule.chipBorder }}">{{ cut.rule.statusLabel }}</span><button onClick="{{ cut.openRule }}" style="min-height:44px;padding:0;border:0;background:none;font:700 14px Inter,'Noto Sans Devanagari';color:#0f2a4a;text-decoration:underline;text-underline-offset:4px;cursor:pointer">{{ t.readRule }}</button></div>
+</div>
+</sc-if>
+</div>
+<div style="flex:none;padding:12px 20px;display:flex;gap:10px;border-top:1px solid #d6d0c3">
+<button onClick="{{ cut.prev }}" style="width:60px;height:60px;flex:none;border:2px solid #0f2a4a;background:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;opacity:{{ cut.prevOpacity }}"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0f2a4a" style="stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round"><path d="M15 6l-6 6 6 6"></path></svg></button>
+<button onClick="{{ cut.next }}" style="flex:1;min-height:60px;border:0;background:#0f2a4a;color:#fff;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:0 20px;font-family:Anton,'Noto Sans Devanagari',sans-serif;font-weight:700;font-synthesis:none;font-size:18px;text-transform:uppercase;cursor:pointer;text-align:left">{{ cut.nextLabel }}<span style="color:#4ade80">→</span></button>
+</div>
+</div>
+</sc-if>
+
+<!-- PRICING -->
+<sc-if value="{{ is.pricing }}" hint-placeholder-val="{{ false }}">
+<div data-screen-label="Pricing" style="flex:1;min-height:0;display:flex;flex-direction:column">
+<div style="height:52px;flex:none;margin:0 20px;display:flex;align-items:center;gap:6px;border-bottom:3px solid #0f2a4a"><button onClick="{{ back }}" style="width:44px;height:44px;margin-left:-10px;border:0;background:none;cursor:pointer;display:flex;align-items:center;justify-content:center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0f2a4a" style="stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round"><path d="M19 12H5M11 6l-6 6 6 6"></path></svg></button><span style="flex:1;font-family:Anton,'Noto Sans Devanagari',sans-serif;font-weight:700;font-synthesis:none;font-size:20px">{{ t.fightTitle }}</span></div>
+<div style="flex:1;min-height:0;overflow-y:auto;padding:18px 20px 20px;display:grid;gap:16px;align-content:start">
+<div style="font-family:Anton,'Noto Sans Devanagari',sans-serif;font-weight:700;font-synthesis:none;text-transform:uppercase;font-size:{{ F.h1 }};line-height:{{ L.h1 }}">{{ t.costH }}</div>
+<div style="font-size:16px;line-height:{{ L.body }};color:#334155;margin-top:-6px">{{ t.costSub }}</div>
+<div style="display:grid;background:#fff;border:2px solid #0f2a4a;padding:4px 16px">
+<div style="min-height:64px;display:flex;align-items:center;gap:12px;border-bottom:1px solid #cfc9bc;padding:10px 0"><span style="flex:1;display:flex;flex-direction:column;gap:2px"><span style="font-size:16px;font-weight:600">{{ t.workFee }}</span><span style="font-size:13px;line-height:1.5;color:#475569">{{ t.workSub }}</span></span><span style="font:26px Anton,sans-serif">{{ p.work }}</span></div>
+<sc-if value="{{ p.hasSuccess }}" hint-placeholder-val="{{ true }}">
+<div style="min-height:64px;display:flex;align-items:center;gap:12px;border-bottom:1px solid #cfc9bc;padding:10px 0"><span style="flex:1;display:flex;flex-direction:column;gap:2px"><span style="font-size:16px;font-weight:600;line-height:1.4">{{ t.successFee }}</span><span style="font-size:13px;line-height:1.5;color:#475569">{{ p.successSub }}</span></span><span style="font:26px Anton,sans-serif">{{ p.success }}</span></div>
+</sc-if>
+<div style="min-height:80px;display:flex;align-items:center;gap:12px;padding:10px 0"><span style="flex:1;font-size:12px;font-weight:700;letter-spacing:.1em">{{ t.total }}</span><span style="font:48px Anton,sans-serif;color:#15803d">{{ p.total }}</span></div>
+</div>
+<div style="font-size:13px;color:#475569;margin-top:-6px">{{ t.gst }}</div>
+<div style="font-size:12px;font-weight:700;letter-spacing:.1em;padding:12px 0 8px;border-bottom:3px solid #0f2a4a">{{ t.outcomesH }}</div>
+<div style="display:grid;margin-top:-16px">
+<div style="display:flex;gap:14px;padding:14px 0;border-bottom:1px solid #0f2a4a"><span style="font:20px Anton,sans-serif;color:#15803d;width:26px;flex:none">01</span><span style="display:flex;flex-direction:column;gap:4px"><span style="font-family:Anton,'Noto Sans Devanagari',sans-serif;font-weight:700;font-synthesis:none;font-size:19px;text-transform:uppercase">{{ t.o1t }}</span><span style="font-size:15px;line-height:{{ L.body }};color:#334155">{{ t.o1b }}</span></span></div>
+<div style="display:flex;gap:14px;padding:14px 0;border-bottom:1px solid #0f2a4a"><span style="font:20px Anton,sans-serif;color:#15803d;width:26px;flex:none">02</span><span style="display:flex;flex-direction:column;gap:4px"><span style="font-family:Anton,'Noto Sans Devanagari',sans-serif;font-weight:700;font-synthesis:none;font-size:19px;text-transform:uppercase">{{ t.o2t }}</span><span style="font-size:15px;line-height:{{ L.body }};color:#334155">{{ t.o2b }}</span></span></div>
+<div style="display:flex;gap:14px;padding:14px 0;border-bottom:1px solid #0f2a4a"><span style="font:20px Anton,sans-serif;color:#15803d;width:26px;flex:none">03</span><span style="display:flex;flex-direction:column;gap:4px"><span style="font-family:Anton,'Noto Sans Devanagari',sans-serif;font-weight:700;font-synthesis:none;font-size:19px;text-transform:uppercase">{{ t.o3t }}</span><span style="font-size:15px;line-height:{{ L.body }};color:#334155">{{ t.o3b }}</span></span></div>
+</div>
+<sc-if value="{{ r.isDemo }}" hint-placeholder-val="{{ false }}"><div style="border:1.5px dashed #475569;padding:10px 12px;font-size:13px;line-height:1.5;color:#334155">{{ t.demoPayNote }}</div></sc-if>
+</div>
+<div style="flex:none;padding:12px 20px;border-top:1px solid #d6d0c3"><button onClick="{{ pay }}" style="width:100%;min-height:60px;border:0;background:#15803d;color:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 22px;font-family:Anton,'Noto Sans Devanagari',sans-serif;font-weight:700;font-synthesis:none;font-size:21px;cursor:pointer" style-hover="background:#166534">{{ p.payLabel }}<span>→</span></button></div>
+</div>
+</sc-if>
+
+<!-- PAID -->
+<sc-if value="{{ is.paid }}" hint-placeholder-val="{{ false }}">
+<div data-screen-label="Demo payment success" style="flex:1;min-height:0;display:flex;flex-direction:column;background:#15803d;color:#fff;padding:20px 20px 16px;gap:18px">
+<div style="display:flex;align-items:flex-start;justify-content:space-between;gap:10px"><sc-if value="{{ r.isDemo }}" hint-placeholder-val="{{ false }}"><span style="border:2px dashed #fff;padding:6px 10px;font-size:12px;font-weight:700;letter-spacing:.08em">{{ t.paidChip }}</span></sc-if><button onClick="{{ back }}" style="width:44px;height:44px;flex:none;margin:-6px -10px 0 auto;border:0;background:none;cursor:pointer;display:flex;align-items:center;justify-content:center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" style="stroke-width:2.6;stroke-linecap:round"><path d="M6 6l12 12M18 6L6 18"></path></svg></button></div>
+<div style="flex:1;display:flex;flex-direction:column;justify-content:center;gap:16px">
+<div style="width:72px;height:72px;background:#fff;display:flex;align-items:center;justify-content:center"><svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#15803d" style="stroke-width:3;stroke-linecap:round;stroke-linejoin:round"><path d="M5 12.5l4.5 4.5L19 7"></path></svg></div>
+<div style="font-family:Anton,'Noto Sans Devanagari',sans-serif;font-weight:700;font-synthesis:none;text-transform:uppercase;font-size:{{ F.h1 }};line-height:{{ L.h1 }}">{{ t.paidH }}</div>
+<div style="display:flex;align-items:baseline;gap:10px;border-top:2px solid #fff;padding-top:10px"><span style="font-size:13px;font-weight:700;letter-spacing:.08em">{{ t.paidAmt }}</span><span style="font:40px Anton,sans-serif">{{ p.total }}</span></div>
+<div style="font-size:17px;line-height:{{ L.body }}">{{ t.paidB }}</div>
+</div>
+<button onClick="{{ paidLetter }}" style="min-height:60px;border:0;background:#fff;color:#0f2a4a;display:flex;align-items:center;justify-content:space-between;padding:0 22px;font-family:Anton,'Noto Sans Devanagari',sans-serif;font-weight:700;font-synthesis:none;font-size:21px;cursor:pointer">{{ t.letterCta }}<span style="color:#15803d">→</span></button>
+<button onClick="{{ paidSteps }}" style="min-height:52px;border:2px solid #fff;background:none;color:#fff;font:600 16px Inter,'Noto Sans Devanagari';cursor:pointer">{{ t.seeSteps }}</button>
+</div>
+</sc-if>
+
+<!-- LETTER -->
+<sc-if value="{{ is.letter }}" hint-placeholder-val="{{ false }}">
+<div data-screen-label="Complaint letter" style="flex:1;min-height:0;display:flex;flex-direction:column">
+<div style="height:52px;flex:none;margin:0 20px;display:flex;align-items:center;gap:6px;border-bottom:3px solid #0f2a4a"><button onClick="{{ back }}" style="width:44px;height:44px;margin-left:-10px;border:0;background:none;cursor:pointer;display:flex;align-items:center;justify-content:center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0f2a4a" style="stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round"><path d="M19 12H5M11 6l-6 6 6 6"></path></svg></button><span style="flex:1;font-family:Anton,'Noto Sans Devanagari',sans-serif;font-weight:700;font-synthesis:none;font-size:20px">{{ t.letterTitle }}</span>
+<div style="height:34px;display:flex;border:2px solid #0f2a4a;box-sizing:border-box"><button onClick="{{ lt.setEn }}" style="padding:0 11px;border:0;cursor:pointer;font:700 13px Inter;background:{{ lt.enBg }};color:{{ lt.enFg }}">EN</button><button onClick="{{ lt.setHi }}" style="padding:0 11px;border:0;cursor:pointer;font:700 14px 'Noto Sans Devanagari';background:{{ lt.hiBg }};color:{{ lt.hiFg }}">हिं</button></div></div>
+<div style="flex:1;min-height:0;overflow-y:auto;padding:16px 20px 20px;display:grid;gap:14px;align-content:start">
+<div style="display:flex;align-items:flex-start;gap:12px"><div style="flex:1;font-size:14px;line-height:1.55;color:#334155">{{ t.letterIntro }}</div><button onClick="{{ lt.toggleEdit }}" style="min-height:40px;padding:0 12px;border:2px solid #0f2a4a;background:#fff;font:700 12px Inter,'Noto Sans Devanagari';letter-spacing:.06em;color:#0f2a4a;cursor:pointer;white-space:nowrap">{{ lt.editLabel }}</button></div>
+<sc-if value="{{ lt.hasLetter }}" hint-placeholder-val="{{ true }}"><div style="display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:{{ lt.blankColor }}"><span style="width:12px;height:12px;flex:none;background:#fcd34d;border:1px solid #b45309"></span><span style="flex:1;min-width:0">{{ lt.blankMsg }}</span></div></sc-if>
+<sc-if value="{{ lt.loading }}" hint-placeholder-val="{{ false }}"><div style="border:2px dashed #0f2a4a;padding:18px;font-size:15px;display:flex;align-items:center;gap:10px"><span style="width:10px;height:10px;flex:none;background:#15803d"></span>{{ t.letterLoading }}</div></sc-if>
+<sc-if value="{{ lt.failed }}" hint-placeholder-val="{{ false }}"><div style="border:2px solid #b91c1c;background:#fdecec;padding:14px;display:grid;gap:10px"><div style="font-size:15px;font-weight:700;color:#991b1b">{{ t.letterErr }}</div><div style="font:500 12px/1.5 'IBM Plex Mono',monospace;color:#7f1d1d;overflow-wrap:anywhere">{{ lt.errMsg }}</div><button onClick="{{ lt.retry }}" style="justify-self:start;min-height:44px;padding:0 16px;border:2px solid #0f2a4a;background:#fff;font:700 13px Inter,'Noto Sans Devanagari';cursor:pointer;color:#0f2a4a">{{ t.retryShort }}</button></div></sc-if>
+<sc-if value="{{ lt.none }}" hint-placeholder-val="{{ false }}"><div style="font-size:15px;color:#475569">{{ t.noLetter }}</div></sc-if>
+<sc-if value="{{ lt.view }}" hint-placeholder-val="{{ true }}">
+<div style="background:#fff;border:1px solid #d6d0c3;box-shadow:0 2px 0 #d6d0c3;padding:20px 18px;display:flex;flex-direction:column;font-size:15px;line-height:{{ lt.lh }}">
+<sc-for list="{{ lt.lines }}" as="line" hint-placeholder-count="12">
+<div style="min-height:{{ line.minH }};overflow-wrap:anywhere"><sc-for list="{{ line.parts }}" as="pt" hint-placeholder-count="1"><sc-if value="{{ pt.ph }}" hint-placeholder-val="{{ false }}"><button onClick="{{ pt.fill }}" style="border:1px solid #b45309;background:#fcd34d;color:#78350f;font:600 14px Inter,'Noto Sans Devanagari';padding:1px 6px;margin:1px 0;cursor:pointer;white-space:nowrap;display:inline-block">{{ pt.text }}</button></sc-if><sc-if value="{{ pt.plain }}" hint-placeholder-val="{{ true }}"><span>{{ pt.text }}</span></sc-if></sc-for></div>
+</sc-for>
+</div>
+</sc-if>
+<sc-if value="{{ lt.editing }}" hint-placeholder-val="{{ false }}">
+<textarea value="{{ lt.text }}" onChange="{{ lt.onEdit }}" style="width:100%;height:520px;box-sizing:border-box;border:2px solid #0f2a4a;background:#fff;padding:16px;font-size:15px;line-height:{{ lt.lh }};color:#0f2a4a;resize:vertical;outline:none"></textarea>
+</sc-if>
+<button onClick="{{ goSteps }}" style="min-height:56px;border:0;background:#0f2a4a;color:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 20px;font-family:Anton,'Noto Sans Devanagari',sans-serif;font-weight:700;font-synthesis:none;font-size:19px;cursor:pointer">{{ t.nextSteps }}<span style="color:#4ade80">→</span></button>
+</div>
+<div style="flex:none;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:3px solid #0f2a4a;background:#fff">
+<button onClick="{{ lt.copy }}" style="height:68px;border:0;border-right:1px solid #d6d0c3;background:none;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;color:#0f2a4a" style-hover="background:#f0ece3"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="stroke-width:2;stroke-linejoin:round"><rect x="8" y="8" width="12" height="12"></rect><path d="M16 8V4H4v12h4"></path></svg><span style="font-size:11px;font-weight:700;letter-spacing:.06em">{{ t.copy }}</span></button>
+<button onClick="{{ lt.whatsapp }}" style="height:68px;border:0;border-right:1px solid #d6d0c3;background:none;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;color:#15803d" style-hover="background:#f0ece3"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="stroke-width:2;stroke-linejoin:round"><path d="M4 20l1.5-4A8 8 0 1 1 9 19.5z"></path></svg><span style="font-size:11px;font-weight:700;letter-spacing:.06em">{{ t.whatsapp }}</span></button>
+<button onClick="{{ lt.email }}" style="height:68px;border:0;border-right:1px solid #d6d0c3;background:none;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;color:#0f2a4a" style-hover="background:#f0ece3"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="stroke-width:2;stroke-linejoin:round"><rect x="3" y="5" width="18" height="14"></rect><path d="M3 6l9 7 9-7"></path></svg><span style="font-size:11px;font-weight:700;letter-spacing:.06em">{{ t.email }}</span></button>
+<button onClick="{{ lt.download }}" style="height:68px;border:0;background:none;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;color:#0f2a4a" style-hover="background:#f0ece3"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="stroke-width:2;stroke-linecap:round;stroke-linejoin:round"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"></path></svg><span style="font-size:11px;font-weight:700;letter-spacing:.06em">{{ t.download }}</span></button>
+</div>
+</div>
+</sc-if>
+
+<!-- NEXT STEPS -->
+<sc-if value="{{ is.steps }}" hint-placeholder-val="{{ false }}">
+<div data-screen-label="Next steps" style="flex:1;min-height:0;display:flex;flex-direction:column">
+<div style="height:52px;flex:none;margin:0 20px;display:flex;align-items:center;gap:6px;border-bottom:3px solid #0f2a4a"><button onClick="{{ back }}" style="width:44px;height:44px;margin-left:-10px;border:0;background:none;cursor:pointer;display:flex;align-items:center;justify-content:center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0f2a4a" style="stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round"><path d="M19 12H5M11 6l-6 6 6 6"></path></svg></button><span style="flex:1;font-family:Anton,'Noto Sans Devanagari',sans-serif;font-weight:700;font-synthesis:none;font-size:20px">{{ t.stepsTitle }}</span></div>
+<div style="flex:1;min-height:0;overflow-y:auto;padding:16px 20px 24px;display:grid;gap:16px;align-content:start">
+<div style="font-size:16px;line-height:{{ L.body }};color:#334155">{{ t.stepsIntro }}</div>
+<button onClick="{{ st.toggleRemind }}" style="min-height:60px;display:flex;align-items:center;gap:12px;border:2px solid #0f2a4a;background:#fff;padding:0 14px;cursor:pointer;text-align:left;color:#0f2a4a"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="stroke-width:2;stroke-linejoin:round"><path d="M6 16V11a6 6 0 0 1 12 0v5l2 2H4z"></path><path d="M10 21h4"></path></svg><span style="flex:1;font-size:15px;font-weight:600">{{ t.remind }}</span><span style="width:50px;height:28px;flex:none;box-sizing:border-box;padding:3px;display:flex;background:{{ st.swBg }};justify-content:{{ st.swJustify }}"><span style="width:22px;height:22px;background:#fff"></span></span></button>
+<div style="display:grid">
+<sc-for list="{{ st.items }}" as="s" hint-placeholder-count="3">
+<div style="display:flex;gap:14px">
+<div style="display:flex;flex-direction:column;align-items:center;flex:none"><div style="width:34px;height:34px;box-sizing:border-box;display:flex;align-items:center;justify-content:center;font:17px Anton,sans-serif;background:{{ s.dotBg }};color:{{ s.dotFg }};border:2px solid {{ s.dotBorder }}">{{ s.mark }}</div><div style="width:2px;flex:1;background:#0f2a4a;opacity:{{ s.lineOpacity }};margin:4px 0"></div></div>
+<div style="flex:1;display:flex;flex-direction:column;gap:7px;padding-bottom:26px">
+<div style="font:22px Anton,sans-serif;color:{{ s.dateColor }}">{{ s.date }}</div>
+<div style="font-size:17px;line-height:1.45;font-weight:600">{{ s.step }}</div>
+<div style="font-size:14px;line-height:{{ s.lh }};color:#334155">{{ s.text }}</div>
+<a href="{{ s.url }}" target="_blank" rel="noopener" style="align-self:flex-start;display:flex;align-items:center;gap:6px;font-size:12px;font-weight:700;letter-spacing:.04em;padding:6px 9px;text-decoration:none;background:{{ s.chipBg }};color:{{ s.chipFg }};border:{{ s.chipBorder }}">{{ s.statusLabel }} ↗</a>
+<button onClick="{{ s.toggle }}" style="align-self:flex-start;min-height:44px;padding:0 14px;border:2px solid #0f2a4a;cursor:pointer;font:700 13px Inter,'Noto Sans Devanagari';letter-spacing:.06em;background:{{ s.btnBg }};color:{{ s.btnFg }}">{{ s.btnLabel }}</button>
+</div>
+</div>
+</sc-for>
+</div>
+</div>
+<div style="flex:none;padding:12px 20px;border-top:1px solid #d6d0c3"><button onClick="{{ goChat }}" style="width:100%;min-height:60px;border:0;background:#0f2a4a;color:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 22px;font-family:Anton,'Noto Sans Devanagari',sans-serif;font-weight:700;font-synthesis:none;font-size:20px;cursor:pointer">{{ t.chatTitle }}<span style="color:#4ade80">→</span></button></div>
+</div>
+</sc-if>
+
+<!-- CHAT -->
+<sc-if value="{{ is.chat }}" hint-placeholder-val="{{ false }}">
+<div data-screen-label="Ask ClaimRight" style="flex:1;min-height:0;display:flex;flex-direction:column">
+<div style="height:58px;flex:none;margin:0 20px;display:flex;align-items:center;gap:6px;border-bottom:3px solid #0f2a4a"><button onClick="{{ back }}" style="width:44px;height:44px;margin-left:-10px;border:0;background:none;cursor:pointer;display:flex;align-items:center;justify-content:center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0f2a4a" style="stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round"><path d="M19 12H5M11 6l-6 6 6 6"></path></svg></button><span style="flex:1;display:flex;flex-direction:column"><span style="font-family:Anton,'Noto Sans Devanagari',sans-serif;font-weight:700;font-synthesis:none;font-size:19px;line-height:1.3">{{ t.chatTitle }}</span><span style="font-size:12px;color:#475569">{{ ch.sub }}</span></span>
+<div style="height:34px;display:flex;border:2px solid #0f2a4a;box-sizing:border-box"><button onClick="{{ setEn }}" style="padding:0 11px;border:0;cursor:pointer;font:700 13px Inter;background:{{ tg.enBg }};color:{{ tg.enFg }}">EN</button><button onClick="{{ setHi }}" style="padding:0 11px;border:0;cursor:pointer;font:700 14px 'Noto Sans Devanagari';background:{{ tg.hiBg }};color:{{ tg.hiFg }}">हिं</button></div></div>
+<div ref="{{ chatRef }}" style="flex:1;min-height:0;overflow-y:auto;padding:16px 16px 12px;display:grid;gap:12px;align-content:start">
+<div style="justify-self:start;max-width:86%;background:#fff;border:2px solid #0f2a4a;padding:12px 14px;font-size:15px;line-height:{{ L.body }}">{{ ch.intro }}</div>
+<sc-for list="{{ ch.msgs }}" as="m" hint-placeholder-count="0">
+<sc-if value="{{ m.user }}" hint-placeholder-val="{{ false }}"><div style="justify-self:end;max-width:82%;background:#0f2a4a;color:#fff;padding:12px 14px;font-size:15px;line-height:{{ m.lh }}">{{ m.text }}</div></sc-if>
+<sc-if value="{{ m.bot }}" hint-placeholder-val="{{ false }}">
+<div style="justify-self:start;max-width:90%;display:flex;flex-direction:column;gap:6px">
+<div style="background:#fff;border:2px solid #0f2a4a;padding:12px 14px;display:flex;flex-direction:column;gap:8px;font-size:15px;line-height:{{ m.lh }}">
+<sc-for list="{{ m.paras }}" as="pa" hint-placeholder-count="2"><div style="display:flex;gap:8px"><sc-if value="{{ pa.bullet }}" hint-placeholder-val="{{ false }}"><span style="width:6px;height:6px;background:#15803d;flex:none;margin-top:9px"></span></sc-if><span><sc-for list="{{ pa.parts }}" as="pt" hint-placeholder-count="1"><span style="font-weight:{{ pt.w }};font-family:{{ pt.ff }};font-style:{{ pt.fs }};font-size:{{ pt.size }}">{{ pt.text }}</span></sc-for></span></div></sc-for>
+</div>
+<sc-if value="{{ m.hasTools }}" hint-placeholder-val="{{ false }}"><div style="font:500 11px 'IBM Plex Mono',monospace;color:#475569;padding-left:2px">{{ m.tools }}</div></sc-if>
+</div>
+</sc-if>
+</sc-for>
+<sc-if value="{{ ch.typing }}" hint-placeholder-val="{{ false }}"><div style="justify-self:start;background:#fff;border:2px dashed #0f2a4a;padding:12px 14px;font-size:14px;display:flex;align-items:center;gap:10px"><span style="width:10px;height:10px;background:#15803d;opacity:{{ ch.pulse }};transition:opacity .4s"></span>{{ ch.typingLabel }}</div></sc-if>
+<sc-if value="{{ ch.showChips }}" hint-placeholder-val="{{ true }}"><div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:flex-end;margin-top:4px"><sc-for list="{{ ch.chips }}" as="c" hint-placeholder-count="3"><button onClick="{{ c.send }}" style="min-height:44px;padding:8px 14px;border:2px solid #0f2a4a;background:#f6f3ec;color:#0f2a4a;font:600 14px/1.4 Inter,'Noto Sans Devanagari';cursor:pointer;text-align:left" style-hover="background:#0f2a4a;color:#fff">{{ c.text }}</button></sc-for></div></sc-if>
+</div>
+<div style="flex:none;display:flex;gap:8px;padding:10px 16px 12px;border-top:3px solid #0f2a4a;background:#fff">
+<input value="{{ input }}" onChange="{{ onInput }}" onKeyDown="{{ onKey }}" placeholder="{{ t.typeHere }}" style="flex:1;min-width:0;height:50px;border:2px solid #0f2a4a;padding:0 14px;font-size:15px;color:#0f2a4a;outline:none;background:#f6f3ec">
+<button onClick="{{ sendInput }}" style="width:50px;height:50px;flex:none;border:0;background:#15803d;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></button>
+</div>
+</div>
+</sc-if>
+
+<!-- MY CASES -->
+<sc-if value="{{ is.cases }}" hint-placeholder-val="{{ false }}">
+<div data-screen-label="My cases" style="flex:1;min-height:0;display:flex;flex-direction:column">
+<div style="height:52px;flex:none;margin:0 20px;display:flex;align-items:center;border-bottom:3px solid #0f2a4a"><span style="flex:1;font-family:Anton,'Noto Sans Devanagari',sans-serif;font-weight:700;font-synthesis:none;font-size:22px">{{ t.casesTitle }}</span></div>
+<div style="flex:1;min-height:0;overflow-y:auto;padding:18px 20px 24px;display:grid;gap:16px;align-content:start">
+<sc-if value="{{ hasCases }}" hint-placeholder-val="{{ false }}">
+<sc-for list="{{ myCases }}" as="c" hint-placeholder-count="1">
+<div style="background:#fff;border:2px solid #0f2a4a;padding:16px;display:flex;flex-direction:column;gap:12px">
+<div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px"><div style="display:flex;flex-direction:column;gap:2px"><span style="font-family:Anton,'Noto Sans Devanagari',sans-serif;font-weight:700;font-synthesis:none;font-size:20px;text-transform:uppercase">{{ c.title }}</span><span style="font-size:13px;color:#475569">{{ c.patient }}</span></div></div>
+<div style="display:flex;align-items:baseline;gap:8px"><span style="font:30px Anton,sans-serif;color:{{ c.amtColor }}">{{ c.amt }}</span><span style="font-size:13px;font-weight:600;color:#475569">{{ c.amtLabel }}</span></div>
+<div style="display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:3px"><sc-for list="{{ c.bars }}" as="b" hint-placeholder-count="6"><div style="height:6px;background:{{ b.bg }}"></div></sc-for></div>
+<div style="font-size:14px"><span style="color:#475569">{{ c.nowLbl }}:</span> <b>{{ c.stageLabel }}</b></div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+<button onClick="{{ c.open }}" style="min-height:48px;border:0;background:#0f2a4a;color:#fff;font:700 13px Inter,'Noto Sans Devanagari';letter-spacing:.06em;cursor:pointer">{{ c.openLbl }}</button>
+<button onClick="{{ c.update }}" style="min-height:48px;border:2px solid #0f2a4a;background:#fff;color:#0f2a4a;font:700 13px Inter,'Noto Sans Devanagari';letter-spacing:.06em;cursor:pointer">{{ c.updateLbl }}</button>
+</div>
+</div>
+</sc-for>
+</sc-if>
+<sc-if value="{{ noCases }}" hint-placeholder-val="{{ true }}">
+<div style="padding-top:30px;display:flex;flex-direction:column;gap:14px">
+<div style="font-family:Anton,'Noto Sans Devanagari',sans-serif;font-weight:700;font-synthesis:none;text-transform:uppercase;font-size:{{ F.h1 }};line-height:{{ L.h1 }}">{{ t.emptyH }}</div>
+<div style="font-size:16px;line-height:{{ L.body }};color:#334155">{{ t.emptyB }}</div>
+<button onClick="{{ startUpload }}" style="min-height:60px;border:0;background:#0f2a4a;color:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 22px;font-family:Anton,'Noto Sans Devanagari',sans-serif;font-weight:700;font-synthesis:none;font-size:20px;cursor:pointer;margin-top:8px">{{ t.checkCta }}<span style="color:#4ade80">→</span></button>
+</div>
+</sc-if>
+</div>
+</div>
+</sc-if>
+
+<!-- SETTINGS -->
+<sc-if value="{{ is.settings }}" hint-placeholder-val="{{ false }}">
+<div data-screen-label="Settings" style="flex:1;min-height:0;display:flex;flex-direction:column">
+<div style="height:52px;flex:none;margin:0 20px;display:flex;align-items:center;border-bottom:3px solid #0f2a4a"><span style="flex:1;font-family:Anton,'Noto Sans Devanagari',sans-serif;font-weight:700;font-synthesis:none;font-size:22px">{{ t.settingsTitle }}</span></div>
+<div style="flex:1;min-height:0;overflow-y:auto;padding:18px 20px 24px;display:grid;gap:22px;align-content:start">
+<div style="display:grid;gap:10px"><div style="font-size:12px;font-weight:700;letter-spacing:.12em">{{ t.langH }}</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;border:2px solid #0f2a4a"><button onClick="{{ setEn }}" style="min-height:52px;border:0;cursor:pointer;font:18px Anton,sans-serif;letter-spacing:.04em;background:{{ tg.enBg }};color:{{ tg.enFg }}">ENGLISH</button><button onClick="{{ setHi }}" style="min-height:52px;border:0;cursor:pointer;font:700 18px 'Noto Sans Devanagari';background:{{ tg.hiBg }};color:{{ tg.hiFg }}">हिंदी</button></div></div>
+
+<div style="display:grid;gap:8px;border-top:3px solid #0f2a4a;padding-top:12px"><div style="font-size:12px;font-weight:700;letter-spacing:.12em">{{ t.discH }}</div><div style="font-size:14px;line-height:{{ L.body }};color:#334155">{{ t.disclaimer }}</div></div>
+<div style="display:grid;gap:12px;border-top:3px solid #0f2a4a;padding-top:12px"><div style="font-size:12px;font-weight:700;letter-spacing:.12em">{{ t.aboutH }}</div>
+<div style="display:flex;gap:14px;align-items:center"><img src="assets/aviti_1_check.svg" alt="Team Aviti" style="width:60px;height:60px;flex:none"><div style="font-size:14px;line-height:1.55;color:#334155">{{ t.aboutB }}</div></div>
+<div style="display:flex;gap:10px;align-items:flex-start"><span style="font:48px/36px Anton,sans-serif;color:#15803d">“</span><span style="font-size:15px;line-height:1.55;font-weight:600">{{ t.principle }}</span></div></div>
+<button onClick="{{ tapVersion }}" style="min-height:48px;border:0;border-top:1px solid #cfc9bc;background:none;padding:0;text-align:left;font:500 13px 'IBM Plex Mono',monospace;color:#475569;cursor:pointer">{{ t.version }}</button>
+<sc-if value="{{ dev.open }}" hint-placeholder-val="{{ false }}">
+<div style="display:grid;gap:12px;border:2px dashed #0f2a4a;padding:14px">
+<div style="font-size:12px;font-weight:700;letter-spacing:.12em">{{ t.devH }}</div>
+<div style="display:grid;gap:6px"><span style="font-size:13px;font-weight:700;letter-spacing:.06em">{{ t.apiBase }}</span><input value="{{ dev.base }}" onChange="{{ dev.onBase }}" style="height:48px;min-width:0;border:2px solid #0f2a4a;padding:0 12px;font:500 12px 'IBM Plex Mono',monospace;color:#0f2a4a;background:#fff;outline:none"></div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px"><button onClick="{{ dev.save }}" style="min-height:48px;border:0;background:#0f2a4a;color:#fff;font:700 13px Inter,'Noto Sans Devanagari';letter-spacing:.06em;cursor:pointer">{{ t.save }}</button><button onClick="{{ dev.test }}" style="min-height:48px;border:2px solid #0f2a4a;background:#fff;color:#0f2a4a;font:700 13px Inter,'Noto Sans Devanagari';letter-spacing:.06em;cursor:pointer">{{ t.testConn }}</button></div>
+<sc-if value="{{ dev.hasStatus }}" hint-placeholder-val="{{ false }}"><div style="font:500 12px/1.5 'IBM Plex Mono',monospace;overflow-wrap:anywhere;color:{{ dev.statusColor }}">{{ dev.status }}</div></sc-if>
+<button onClick="{{ dev.reset }}" style="min-height:48px;border:2px solid #b91c1c;background:#fff;color:#b91c1c;font:700 13px Inter,'Noto Sans Devanagari';letter-spacing:.06em;cursor:pointer">{{ t.resetAll }}</button>
+</div>
+</sc-if>
+</div>
+</div>
+</sc-if>
+
+<!-- DEMO MODE -->
+<sc-if value="{{ is.demo }}" hint-placeholder-val="{{ false }}">
+<div data-screen-label="Demo mode" style="flex:1;min-height:0;display:flex;flex-direction:column">
+<div style="height:52px;flex:none;margin:0 20px;display:flex;align-items:center;gap:10px;border-bottom:3px solid #0f2a4a"><span style="flex:1;font-family:Anton,'Noto Sans Devanagari',sans-serif;font-weight:700;font-synthesis:none;font-size:22px">{{ t.demoTitle }}</span><span style="font-size:10px;font-weight:700;letter-spacing:.06em;border:1.5px dashed #475569;padding:3px 6px;color:#475569;white-space:nowrap">{{ t.demoBadge }}</span></div>
+<div style="flex:1;min-height:0;overflow-y:auto;padding:18px 20px 24px;display:grid;gap:18px;align-content:start">
+<div style="background:repeating-linear-gradient(135deg,#ece7dc 0 8px,#f6f3ec 8px 16px);border:2px dashed #0f2a4a;padding:16px;display:grid;gap:8px"><div style="font-family:Anton,'Noto Sans Devanagari',sans-serif;font-weight:700;font-synthesis:none;text-transform:uppercase;font-size:{{ F.h2 }};line-height:{{ L.h2 }}">{{ t.demoH1 }}</div><div style="font-size:15px;line-height:{{ L.body }};color:#334155">{{ t.demoIntro }}</div></div>
+<div style="font-size:12px;font-weight:700;letter-spacing:.12em;padding:8px 0;border-bottom:3px solid #0f2a4a;margin-top:6px">{{ t.demoCasesH }}</div>
+<div style="display:grid;margin-top:-18px">
+<sc-for list="{{ demos }}" as="d" hint-placeholder-count="3">
+<button onClick="{{ d.open }}" style="min-height:68px;display:flex;align-items:center;gap:14px;border:0;border-bottom:1px solid #0f2a4a;background:none;padding:10px 0;text-align:left;cursor:pointer;color:#0f2a4a" style-hover="background:#ece7dc">
+<span style="font:18px Anton,sans-serif;color:#15803d;width:24px">{{ d.num }}</span>
+<span style="flex:1;display:flex;flex-direction:column;gap:2px"><span style="font-size:16px;font-weight:600;line-height:1.4">{{ d.title }}</span><span style="font-size:13px;color:#475569">{{ d.patient }}</span></span>
+<span style="display:flex;flex-direction:column;align-items:flex-end;gap:2px"><span style="font:22px Anton,sans-serif;color:{{ d.amtColor }}">{{ d.amt }}</span><span style="font-size:11px;font-weight:600;color:#475569">{{ d.amtLabel }}</span></span>
+</button>
+</sc-for>
+</div>
+<div style="font-size:12px;font-weight:700;letter-spacing:.12em;padding:8px 0;border-bottom:3px solid #0f2a4a;margin-top:6px">{{ t.demoMoreH }}</div>
+<div style="display:grid;margin-top:-18px">
+<button onClick="{{ demoCheck }}" style="min-height:68px;display:flex;align-items:center;gap:14px;border:0;border-bottom:1px solid #0f2a4a;background:none;padding:10px 0;text-align:left;cursor:pointer;color:#0f2a4a" style-hover="background:#ece7dc"><span style="font:18px Anton,sans-serif;color:#15803d;width:24px">A</span><span style="flex:1;display:flex;flex-direction:column;gap:2px"><span style="font-size:16px;font-weight:600;line-height:1.4">{{ t.demoSim }}</span><span style="font-size:13px;line-height:1.5;color:#475569">{{ t.demoSimSub }}</span></span><span style="font:20px Anton,sans-serif">→</span></button>
+<button onClick="{{ demoReset }}" style="min-height:68px;display:flex;align-items:center;gap:14px;border:0;border-bottom:1px solid #0f2a4a;background:none;padding:10px 0;text-align:left;cursor:pointer;color:#0f2a4a" style-hover="background:#ece7dc"><span style="font:18px Anton,sans-serif;color:#b91c1c;width:24px">B</span><span style="flex:1;display:flex;flex-direction:column;gap:2px"><span style="font-size:16px;font-weight:600;line-height:1.4">{{ t.demoReset }}</span><span style="font-size:13px;line-height:1.5;color:#475569">{{ t.demoResetSub }}</span></span><span style="font:20px Anton,sans-serif">↺</span></button>
+</div>
+</div>
+</div>
+</sc-if>
+
+</div>
+
+<sc-if value="{{ showTabs }}" hint-placeholder-val="{{ false }}">
+<div style="flex:none;display:grid;grid-template-columns:repeat(4,1fr);border-top:3px solid #0f2a4a;background:#f6f3ec">
+<sc-for list="{{ tabs }}" as="tb" hint-placeholder-count="3"><button onClick="{{ tb.go }}" style="height:58px;border:0;background:{{ tb.bg }};cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;position:relative;font-family:Anton,'Noto Sans Devanagari',sans-serif;font-weight:700;font-synthesis:none;font-size:15px;letter-spacing:.04em;color:{{ tb.color }}"><span style="position:absolute;top:0;left:20%;right:20%;height:4px;background:{{ tb.bar }}"></span>{{ tb.label }}</button></sc-for>
+</div>
+</sc-if>
+<div style="height:22px;flex:none;display:flex;align-items:center;justify-content:center;background:{{ hiBg }}"><div style="width:120px;height:4px;border-radius:2px;background:{{ hiFg }}"></div></div>
+
+<sc-if value="{{ sh.open }}" hint-placeholder-val="{{ false }}">
+<div onClick="{{ closeSheet }}" style="position:absolute;inset:0;background:rgba(15,42,74,.55)"></div>
+<div style="position:absolute;left:0;right:0;bottom:0;max-height:88%;overflow-y:auto;background:#f6f3ec;border-top:4px solid #0f2a4a;padding:10px 20px 26px;display:grid;gap:14px;box-sizing:border-box">
+<div style="width:44px;height:5px;background:#0f2a4a;opacity:.3;justify-self:center"></div>
+<sc-if value="{{ sh.isRule }}" hint-placeholder-val="{{ false }}">
+<div style="font-size:12px;font-weight:700;letter-spacing:.12em">{{ t.ruleLbl }} {{ sh.rule.id }}</div>
+<div style="font-family:Anton,'Noto Sans Devanagari',sans-serif;font-weight:700;font-synthesis:none;text-transform:uppercase;font-size:{{ F.h3 }};line-height:{{ L.h2 }}">{{ sh.rule.title }}</div>
+<span style="justify-self:start;font-size:12px;font-weight:700;letter-spacing:.06em;padding:5px 9px;white-space:nowrap;background:{{ sh.rule.chipBg }};color:{{ sh.rule.chipFg }};border:{{ sh.rule.chipBorder }}">{{ sh.rule.statusLabel }}</span>
+<div style="display:grid;gap:4px"><div style="font-size:11px;font-weight:700;letter-spacing:.1em;color:#475569">{{ t.officialWording }}</div><div style="font-size:15px;line-height:1.6">{{ sh.rule.text }}</div></div>
+<div style="background:#fff;border:1px solid #d6d0c3;padding:12px;font:500 13px/1.55 'IBM Plex Mono',monospace;color:#334155">{{ sh.rule.source_title }}</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+<sc-if value="{{ sh.rule.hasUrl }}" hint-placeholder-val="{{ true }}"><a href="{{ sh.rule.source_url }}" target="_blank" rel="noopener" style="min-height:56px;border:2px solid #0f2a4a;background:#fff;color:#0f2a4a;display:flex;align-items:center;justify-content:center;gap:6px;font:700 13px Inter,'Noto Sans Devanagari';letter-spacing:.06em;text-decoration:none">{{ t.openSource }} ↗</a></sc-if>
+<sc-if value="{{ sh.rule.noUrl }}" hint-placeholder-val="{{ false }}"><div style="min-height:56px;display:flex;align-items:center;font-size:13px;line-height:1.4;color:#475569">{{ t.noUrl }}</div></sc-if>
+<button onClick="{{ closeSheet }}" style="min-height:56px;border:0;background:#0f2a4a;color:#fff;font-family:Anton,'Noto Sans Devanagari',sans-serif;font-weight:700;font-synthesis:none;font-size:18px;cursor:pointer">{{ t.gotIt }}</button>
+</div>
+</sc-if>
+<sc-if value="{{ sh.isDocs }}" hint-placeholder-val="{{ false }}">
+<div style="font-family:Anton,'Noto Sans Devanagari',sans-serif;font-weight:700;font-synthesis:none;font-size:24px">{{ t.docsH }}</div>
+<div style="display:grid">
+<sc-for list="{{ sh.docs }}" as="d" hint-placeholder-count="3"><a href="{{ d.url }}" target="_blank" rel="noopener" style="min-height:60px;display:flex;align-items:center;gap:14px;border-bottom:1px solid #0f2a4a;text-decoration:none;color:#0f2a4a"><span style="font:18px Anton,sans-serif;color:#15803d;width:24px">{{ d.num }}</span><span style="flex:1;font-size:16px;font-weight:600">{{ d.name }}</span><span style="font-size:12px;font-weight:700;letter-spacing:.06em">{{ d.open }} ↗</span></a></sc-for>
+</div>
+<button onClick="{{ closeSheet }}" style="min-height:56px;border:0;background:#0f2a4a;color:#fff;font-family:Anton,'Noto Sans Devanagari',sans-serif;font-weight:700;font-synthesis:none;font-size:18px;cursor:pointer">{{ t.gotIt }}</button>
+</sc-if>
+<sc-if value="{{ sh.isFill }}" hint-placeholder-val="{{ false }}">
+<div style="font-size:12px;font-weight:700;letter-spacing:.12em">{{ t.fillH }}</div>
+<div style="font-family:Anton,'Noto Sans Devanagari',sans-serif;font-weight:700;font-synthesis:none;font-size:26px">{{ sh.ph }}</div>
+<input value="{{ fillVal }}" onChange="{{ onFillInput }}" onKeyDown="{{ onFillKey }}" placeholder="{{ sh.phHint }}" style="height:56px;border:2px solid #0f2a4a;padding:0 14px;font-size:16px;color:#0f2a4a;outline:none;background:#fff">
+<button onClick="{{ saveFill }}" style="min-height:56px;border:0;background:#15803d;color:#fff;font-family:Anton,'Noto Sans Devanagari',sans-serif;font-weight:700;font-synthesis:none;font-size:18px;cursor:pointer">{{ t.save }}</button>
+</sc-if>
+<sc-if value="{{ sh.isStatus }}" hint-placeholder-val="{{ false }}">
+<div style="font-family:Anton,'Noto Sans Devanagari',sans-serif;font-weight:700;font-synthesis:none;font-size:24px;text-transform:uppercase">{{ t.updateH }}</div>
+<div style="display:grid">
+<sc-for list="{{ sh.stages }}" as="s" hint-placeholder-count="6"><button onClick="{{ s.pick }}" style="min-height:54px;display:flex;align-items:center;gap:14px;border:0;border-bottom:1px solid #0f2a4a;background:{{ s.bg }};padding:0 8px;text-align:left;cursor:pointer;color:#0f2a4a"><span style="font:18px Anton,sans-serif;color:#15803d;width:24px">{{ s.num }}</span><span style="flex:1;font-size:16px;font-weight:{{ s.w }}">{{ s.label }}</span><span style="font:18px Anton,sans-serif;color:#15803d">{{ s.check }}</span></button></sc-for>
+</div>
+</sc-if>
+</div>
+</sc-if>
+
+<sc-if value="{{ toastOn }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;left:50%;bottom:110px;transform:translateX(-50%);background:#0f2a4a;color:#fff;padding:12px 18px;font-size:14px;font-weight:600;white-space:nowrap;box-shadow:4px 4px 0 #15803d">{{ toast }}</div></sc-if>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const KEY = 'claimright_proto_v2';
+const API = () => window.ClaimRightAPI;
+const D = () => window.CR_DATA;
+const inr = n => '₹' + Math.round(n).toLocaleString('en-IN');
+const pad = n => String(n).padStart(2, '0');
+const MON = { en: ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'], hi: ['जनवरी','फ़रवरी','मार्च','अप्रैल','मई','जून','जुलाई','अगस्त','सितंबर','अक्टूबर','नवंबर','दिसंबर'] };
+const fmtDate = (s, l) => { const [y, m, d] = s.split('-').map(Number); return `${d} ${MON[l][m - 1]} ${y}`; };
+const fmt = (s, o) => s.replace(/\{(\w+)\}/g, (_, k) => o[k] ?? '');
+// Pricing: success_fee = min(round(0.10 × recoverable), 2999); upfront = 299 + success_fee
+function pricing(rec, ask) {
+  if (rec <= 0 && ask <= 0) return null;
+  const raw = rec > 0 ? Math.round(0.10 * rec) : 0;
+  const success = Math.min(raw, 2999);
+  return { work: 299, success, total: 299 + success, capped: raw > 2999 };
+}
+const CASE_ORDER = ['dengue_delhi', 'knee_pune', 'appendix_bengaluru'];
+const CASE_META = {
+  dengue_delhi: { en: 'Dengue, 4 days, Delhi', hi: 'डेंगू, 4 दिन, दिल्ली', sen: 'Dengue · Delhi', shi: 'डेंगू · दिल्ली' },
+  knee_pune: { en: 'Knee replacement, 5 days, Pune', hi: 'घुटना बदलना, 5 दिन, पुणे', sen: 'Knee replacement · Pune', shi: 'घुटना बदलना · पुणे' },
+  appendix_bengaluru: { en: 'Appendix surgery, 3 days, Bengaluru', hi: 'अपेंडिक्स सर्जरी, 3 दिन, बेंगलुरु', sen: 'Appendix · Bengaluru', shi: 'अपेंडिक्स · बेंगलुरु' },
+};
+const SHORT = {
+  dengue_delhi: [['Excess room rent','कमरे का अतिरिक्त किराया'],['Doctor visits','डॉक्टर की फ़ीस'],['Nursing charges','नर्सिंग चार्ज'],['Medicines & IV fluids','दवाइयाँ और IV फ़्लूइड'],['Lab tests','लैब जांच'],['Consumables (non-medical)','कंज्यूमेबल्स (गैर-चिकित्सीय)'],['Admission kit & toiletries','एडमिशन किट और टॉयलेट्रीज'],["Settlement doesn't add up",'सेटलमेंट का हिसाब नहीं मिलता']],
+  knee_pune: [['Consumables','कंज्यूमेबल्स'],['Knee implant sub-limit','घुटने के इम्प्लांट पर सब-लिमिट'],['Physiotherapy','फ़िज़ियोथेरेपी'],['Settlement adds up','सेटलमेंट का हिसाब सही'],['Hospital discount','अस्पताल की छूट']],
+  appendix_bengaluru: [['Consumables (non-medical)','कंज्यूमेबल्स (गैर-चिकित्सीय)'],['Attendant food','मददगार का खाना'],['Co-pay','को-पे'],['Settlement adds up','सेटलमेंट का हिसाब सही']],
+};
+const RULE_HI = { R1: 'आनुपातिक कटौती दवाइयों, कंज्यूमेबल्स, इम्प्लांट या जांच पर नहीं हो सकती', 'R1-ICU': 'ICU चार्ज पर आनुपातिक कटौती नहीं', 'R1-DB': 'अस्पताल कमरे के हिसाब से बिल न बनाए तो आनुपातिक कटौती नहीं', R2: 'कंज्यूमेबल्स आपकी पॉलिसी में कवर हैं', R3: 'अस्पताल की छूट का फ़ायदा पॉलिसीधारक को मिलना चाहिए', R4: 'हर कटौती का लिखित कारण ज़रूरी है', R5: 'हिसाब पूरा मिलना चाहिए', R6: 'सिर्फ़ पॉलिसी में लिखी सीमाएँ ही लागू हो सकती हैं', R7: 'कमरे का अतिरिक्त किराया सही हिसाब से कटना चाहिए' };
+const STEP_HI = {
+  E1: { step: 'बीमा कंपनी के शिकायत निवारण अधिकारी को शिकायत', text: 'बीमा कंपनी को 14 दिन में शिकायत सुलझानी होती है, और पॉलिसी की शर्तों के हवाले से कारण बताने होते हैं।' },
+  E2: { step: 'जवाब न आए या आप सहमत न हों, तो बीमा भरोसा (IRDAI का शिकायत पोर्टल) पर शिकायत करें', text: 'bimabharosa.irdai.gov.in पर अनसुलझी शिकायत दर्ज करें।' },
+  E3: { step: 'बीमा लोकपाल को शिकायत (मुफ़्त)', text: 'बीमा कंपनी शिकायत खारिज करे, जवाब से आप संतुष्ट न हों, या एक महीने में जवाब न आए, तो आप लोकपाल से शिकायत कर सकते हैं। उसके एक साल के भीतर शिकायत करें। यह मुफ़्त है।' },
+};
+const STAGES = { en: ['Checked','Letter sent','Insurer replied','Bima Bharosa','Ombudsman','Recovered'], hi: ['जांच हो गई','पत्र भेजा','बीमा कंपनी का जवाब','बीमा भरोसा','लोकपाल','पैसा वापस मिला'] };
+const CHIPS = {
+  dengue_delhi: { en: ['Why was ₹10,500 cut from my medicines?', "Which rule says lab tests can't be cut? Share the source.", 'What should I do next and by when?'], hi: ['Kya mera lab test ka paisa wapas milega?', 'दवाइयों के ₹10,500 क्यों कटे?', 'अब आगे क्या करना है?'] },
+  knee_pune: { en: ['Was the knee implant cut correctly?', 'physiotherapy ka paisa kyun kata?'], hi: ['मेरा क्लेम क्यों कटा?', 'physiotherapy ka paisa kyun kata?'] },
+  appendix_bengaluru: { en: ['Should I complain about my claim?', 'Was the ₹9,300 co-pay correct?'], hi: ['Should I complain about my claim?', 'Was the ₹9,300 co-pay correct?'] },
+};
+// Mock-only Hindi answers (the sample file has no Hindi dengue replies); built from explanations_hi + rule R1.
+const EXTRA = {
+  dengue_delhi: [
+    { q: 'Kya mera lab test ka paisa wapas milega?', reply: 'लैब जांच पर ₹6,750 की कटौती गलत है, क्योंकि जांच के खर्चों पर यह कटौती नहीं होती (**rule R1**)।\n\n- **नियम:** आनुपातिक कटौती दवाइयों, कंज्यूमेबल्स, इम्प्लांट या जांच पर नहीं हो सकती।\n- **आधिकारिक स्रोत:** IRDAI circular `IRDAI/HLT/REG/CIR/151/06/2020`, 11 जून 2020, क्लॉज़ 4 और 5।\n- आप यह ₹6,750 बीमा कंपनी से वापस क्लेम कर सकते हैं।', tools: ['get_case_audit', 'explain_rule'] },
+    { q: 'दवाइयों के ₹10,500 क्यों कटे?', reply: 'दवाइयों पर ₹10,500 की यह कटौती गलत है क्योंकि फार्मेसी पर ऐसी कटौती नहीं हो सकती (**rule R1**)।\n\nआप यह पैसा वापस क्लेम कर सकते हैं।', tools: ['get_case_audit'] },
+    { q: 'अब आगे क्या करना है?', reply: 'आपके अगले कदम:\n\n- **कदम 1 (20 नवंबर 2026):** बीमा कंपनी के शिकायत निवारण अधिकारी को शिकायत पत्र भेजें। उन्हें 14 दिन में जवाब देना होता है।\n- **कदम 2 (4 दिसंबर 2026):** जवाब न आए या आप सहमत न हों, तो *बीमा भरोसा* (bimabharosa.irdai.gov.in) पर शिकायत करें।\n- **कदम 3 (20 दिसंबर 2026):** फिर भी हल न हो, तो बीमा लोकपाल से शिकायत करें। यह मुफ़्त है।', tools: ['get_case_audit', 'get_next_steps'] },
+  ],
+};
+function mockReply(caseId, msg, lang) {
+  const ex = D().chat.filter(e => e.request.path.endsWith('/' + caseId)).map(e => ({ q: e.request.body.message, reply: e.response.reply, tools: e.response.tools_used })).concat(EXTRA[caseId] || []);
+  const norm = s => s.toLowerCase().replace(/[^\p{L}\p{N}\s]/gu, ' ').split(/\s+/).filter(w => w.length > 1);
+  const m = norm(msg); let best = null, score = 0;
+  ex.forEach(e => { const q = norm(e.q); const hit = q.filter(w => m.includes(w)).length; const sc = hit / Math.max(q.length, 1); if (sc > score) { score = sc; best = e; } });
+  if (best && score >= 0.5) return best;
+  return { reply: lang === 'hi' ? 'डेमो मोड में मैं इस सवाल का पक्का जवाब नहीं दे सकता। हर कटौती, उसका नियम और स्रोत आपकी ऑडिट रिपोर्ट में है। नीचे दिए सवालों में से कोई पूछकर देखें।' : "I can't answer that one with confidence in demo mode. Every cut, its rule and its source are in your audit report. Try one of the suggested questions.", tools: [] };
+}
+function md(text, lang) {
+  const lh = lang === 'hi' ? '1.8' : '1.55';
+  return text.split(/\n+/).map(l => l.trim()).filter(Boolean).map(l => {
+    const bullet = /^[-*]\s+/.test(l); const s = l.replace(/^[-*]\s+/, ''); const parts = [];
+    s.split(/(\*\*[^*]+\*\*|`[^`]+`|\*[^*]+\*)/).forEach(p => {
+      if (!p) return;
+      const base = { w: 400, ff: 'inherit', fs: 'normal', size: 'inherit' };
+      if (p.startsWith('**') && p.endsWith('**')) parts.push({ ...base, text: p.slice(2, -2), w: 700 });
+      else if (p.startsWith('`') && p.endsWith('`')) parts.push({ ...base, text: p.slice(1, -1), ff: "'IBM Plex Mono',monospace", size: '13px' });
+      else if (p.length > 2 && p.startsWith('*') && p.endsWith('*')) parts.push({ ...base, text: p.slice(1, -1), fs: 'italic' });
+      else parts.push({ ...base, text: p });
+    });
+    return { bullet, parts, lh };
+  });
+}
+const T = {
+  en: {
+    skip: 'Skip', next: 'NEXT', start: 'GET STARTED',
+    onb: [
+      { big: '₹43,500', bigSub: 'cut from one demo claim. ₹19,250 of it breaks the rules.', title: 'Insurers often cut hospital claims.', body: 'And many of those cuts break the rules: IRDAI rules or your own policy.' },
+      { big: '01 · 02 · 03', bigSub: 'Bill · Settlement letter · Policy', title: 'Upload 3 documents. The check is free.', body: 'We read every line and check each cut against the rules. You see the rule and its source for everything we flag.' },
+      { big: '₹299', bigSub: 'work fee + 10% advance success fee, refundable', title: 'Fight the cut for ₹299.', body: 'If nothing is recovered in 120 days, the 10% fee is refunded.' },
+    ],
+    homeH1: 'Was your claim', homeH1b: 'cut?', homeBody: 'We check every rupee against IRDAI rules and your policy. The check is free.',
+    doc1: 'Hospital bill', doc2: 'Settlement letter', doc3: 'Your policy', checkCta: 'CHECK MY CLAIM (FREE)',
+    demoWarn: "Demo version: please don't upload real medical documents yet.", tryDemo: 'TRY A DEMO CASE', myCases: 'MY CASES',
+    noCases: 'No cases yet. Claims you check will show up here.', toClaim: 'to claim back', looksCorrect: 'Looks correct', allGood: 'All good',
+    tabHome: 'HOME', tabCases: 'MY CASES', tabSettings: 'SETTINGS',
+    upTitle: 'CHECK MY CLAIM', stepNames: ['BILL', 'SETTLEMENT', 'POLICY'],
+    docs: [{ t: 'The hospital bill', h: 'The final bill with the item-wise list of charges.' }, { t: 'The settlement letter', h: "The insurer's letter that shows what they paid and what they cut." }, { t: 'Your policy', h: 'The policy wording or schedule. All pages, if you can.' }],
+    camera: 'CAMERA', gallery: 'GALLERY', pdf: 'PDF', useSample: 'Use a sample document', replace: 'Replace', remove: 'Remove',
+    tooBigT: 'This file is over 15 MB', tooBigB: 'Try a photo instead, or a smaller PDF. Each file can be up to 15 MB.',
+    tipsT: 'TIPS FOR A CLEAR PHOTO', tips: ['Lay the paper flat in good light.', 'Fit the whole page in the frame.', 'Avoid shadows and glare.', 'One photo per page is fine.'],
+    nextDoc: 'NEXT: ', runCheck: 'CHECK MY CLAIM', demoErr: 'Demo: show the "file too big" error',
+    chkLabel: 'CHECKING YOUR CLAIM', chkH: "We're going through every line.",
+    chkSteps: [{ t: 'Reading your documents', s: 'Gemini reads the bill, letter and policy.' }, { t: 'Checking the rules', s: 'Our rules engine checks every rupee.' }, { t: 'Explaining in plain words', s: 'In English and Hindi.' }],
+    waitTip: 'WHILE YOU WAIT',
+    tips2: ["Medicines and tests can't be cut just because your room cost more. That's an IRDAI rule from 2020.", 'Every cut we flag comes with the rule and its official source.', 'Gemini reads and explains; our rules engine, not the AI, checks every rupee.', 'Complaining to the Insurance Ombudsman is free.'],
+    errH: "Couldn't finish the check", errB: 'The connection dropped before we were done. Your documents are still here in the app. Please try again.', retry: 'TRY AGAIN', backHome: 'Back to home',
+    claimBack: 'YOU CAN CLAIM BACK', heroSub: "{n} of the insurer's cuts break the rules.", goodNews: 'GOOD NEWS', cleanH: 'Your claim looks correct.', cleanSub: '{n} cuts checked. All of them match your policy.',
+    demoBadge: 'DEMO DATA', claimNo: 'Claim', claimed: 'CLAIMED', approved: 'APPROVED', deducted: 'DEDUCTED', askAbout: 'ASK THE INSURER ABOUT',
+    wrongH: 'THE CUTS THAT LOOK WRONG', askH: 'ASK THE INSURER TO EXPLAIN', rightH: 'CUTS THAT LOOK CORRECT', items: 'items',
+    vWrong: '✕ WRONG', vAsk: '? ASK THE INSURER', vRight: '✓ LOOKS RIGHT', seeDocs: 'SEE THE DOCUMENTS', nextMoves: 'YOUR NEXT MOVES', openLetter: 'Complaint letter', openSteps: 'Next steps',
+    fightCta: 'FIGHT THIS CUT', letterCta: 'OPEN THE LETTER', askBtn: 'ASK',
+    disclaimer: 'ClaimRight points to the rule; you decide whether to file. Disputes that need medical or legal judgement should go to a lawyer. This is not legal advice.',
+    readRule: 'READ THE RULE', nextCut: 'Next', backToReport: 'Back to report', ruleLbl: 'RULE',
+    st_verified: '✓ OFFICIAL IRDAI SOURCE', st_policy: '▤ FROM YOUR POLICY', st_press: '◎ REPORTED IN NEWS',
+    openSource: 'OPEN SOURCE', gotIt: 'GOT IT', noUrl: 'Source: your policy wording', officialWording: 'WHAT THE RULE SAYS',
+    docsH: 'THE DOCUMENTS', docNames: ['Hospital bill', 'Settlement letter', 'Policy'], openPdf: 'OPEN PDF',
+    fightTitle: 'FIGHT THIS CUT', costH: 'What it costs', costSub: 'The check was free. You only pay if you choose to fight.',
+    workFee: 'Work fee', workSub: 'For the complaint letters and tracking', successFee: 'Advance success fee (refundable)', successSub: '10% of {rec}', capNote: ', capped at ₹2,999',
+    total: 'TOTAL UPFRONT', gst: 'Fees exclude 18% GST.', outcomesH: 'WHAT HAPPENS NEXT',
+    o1t: 'You win', o1b: 'We keep the 10%.', o2t: 'Partial win', o2b: 'We keep 10% of what was recovered and refund the rest.',
+    o3t: 'Nothing recovered in 120 days', o3b: "The 10% is refunded. Show us the insurer's final reply; you must have sent our complaint letters. We keep the ₹299.",
+    pay: 'PAY {x} (DEMO)', demoPayNote: 'Demo: no real payment is taken.',
+    paidChip: 'DEMO: NO REAL PAYMENT WAS MADE', paidH: "You're all set.", paidB: 'Next, send the complaint letter. We wrote it for you in English and Hindi.', paidAmt: 'PAID (DEMO)', seeSteps: 'See next steps',
+    letterTitle: 'COMPLAINT LETTER', letterIntro: 'Tap a yellow blank to fill it in. Then copy or share the letter.', edit: 'EDIT TEXT', doneEdit: 'DONE',
+    blanksLeft: '{n} blanks left to fill', allFilled: 'All blanks filled. Ready to send.', copy: 'COPY', whatsapp: 'WHATSAPP', email: 'EMAIL', download: 'DOWNLOAD',
+    copied: 'Letter copied', downloaded: 'Letter downloaded', fillH: 'FILL IN THE BLANK', save: 'SAVE', nextSteps: 'NEXT STEPS', subject: 'Grievance regarding claim {c}',
+    stepsTitle: 'NEXT STEPS', stepsIntro: 'Three steps, one after another. Only go to the next one if you need to.', remind: 'Remind me before each date',
+    markDone: 'MARK AS DONE', doneLbl: '✓ DONE · UNDO',
+    chatTitle: 'ASK CLAIMRIGHT', chatIntro: "Ask me anything about {name}'s claim. I answer from the audit report, in English or Hindi.", checkingAudit: 'Checking your audit', toolsUsed: 'Tools used', typeHere: 'Type your question…',
+    casesTitle: 'MY CASES', open: 'OPEN', update: 'UPDATE STATUS', now: 'Now', updateH: 'Where is this case now?', emptyH: 'No cases yet.', emptyB: 'Check a claim or open a demo case. It will show up here so you can track it.',
+    settingsTitle: 'SETTINGS', langH: 'LANGUAGE', demoH: 'DEMO DATA', demoB: "Every case in this version uses synthetic demo data (Demo City Hospital, Demo Suraksha Health Insurance). Demo version: please don't upload real medical documents yet.",
+    discH: 'DISCLAIMER', aboutH: 'ABOUT', aboutB: 'ClaimRight by Team Aviti, for the Google Startup Buildathon India 2026.', principle: 'Gemini reads and explains; our rules engine, not the AI, checks every rupee.',
+    version: 'Version 1.0.0 (demo)', devH: 'DEVELOPER', apiMode: 'API mode', mock: 'MOCK', live: 'LIVE', liveNote: 'Live mode calls the Cloud Run server, which may be offline. This prototype always answers from the sample files.',
+    simErr: 'Simulate errors', reset: 'RESET DEMO', resetDone: 'Demo reset', tapsLeft: '{n} more taps for developer options',
+  },
+  hi: {
+    skip: 'छोड़ें', next: 'आगे', start: 'शुरू करें',
+    onb: [
+      { big: '₹43,500', bigSub: 'एक डेमो क्लेम से कटे। इनमें से ₹19,250 नियमों के खिलाफ़ हैं।', title: 'बीमा कंपनियाँ अक्सर अस्पताल के क्लेम काटती हैं।', body: 'और इनमें से कई कटौतियाँ नियमों के खिलाफ़ होती हैं: IRDAI के नियम या आपकी अपनी पॉलिसी।' },
+      { big: '01 · 02 · 03', bigSub: 'बिल · सेटलमेंट लेटर · पॉलिसी', title: '3 दस्तावेज़ अपलोड करें। जांच मुफ़्त है।', body: 'हम हर लाइन पढ़कर हर कटौती को नियमों से मिलाते हैं। हर गलती के साथ नियम और उसका स्रोत दिखाते हैं।' },
+      { big: '₹299', bigSub: 'काम की फ़ीस + 10% एडवांस सक्सेस फ़ीस, जो लौटाई जा सकती है', title: '₹299 में कटौती के खिलाफ़ लड़ें।', body: 'अगर 120 दिन में कुछ वापस नहीं मिला, तो 10% फ़ीस लौटा दी जाएगी।' },
+    ],
+    homeH1: 'क्या आपका क्लेम', homeH1b: 'कटा?', homeBody: 'हम हर रुपये को IRDAI नियमों और आपकी पॉलिसी से मिलाते हैं। जांच मुफ़्त है।',
+    doc1: 'अस्पताल का बिल', doc2: 'सेटलमेंट लेटर', doc3: 'आपकी पॉलिसी', checkCta: 'मेरा क्लेम जांचें (मुफ़्त)',
+    demoWarn: 'डेमो वर्ज़न: अभी असली मेडिकल दस्तावेज़ अपलोड न करें।', tryDemo: 'डेमो केस देखें', myCases: 'मेरे केस',
+    noCases: 'अभी कोई केस नहीं। आप जो क्लेम जांचेंगे, वे यहाँ दिखेंगे।', toClaim: 'वापस क्लेम कर सकते हैं', looksCorrect: 'सही लगता है', allGood: 'सब सही',
+    tabHome: 'होम', tabCases: 'मेरे केस', tabSettings: 'सेटिंग्स',
+    upTitle: 'मेरा क्लेम जांचें', stepNames: ['बिल', 'सेटलमेंट', 'पॉलिसी'],
+    docs: [{ t: 'अस्पताल का बिल', h: 'आख़िरी बिल, जिसमें हर चीज़ का खर्च अलग लिखा हो।' }, { t: 'सेटलमेंट लेटर', h: 'बीमा कंपनी का लेटर, जिसमें लिखा है कि कितना दिया और कितना काटा।' }, { t: 'आपकी पॉलिसी', h: 'पॉलिसी की शर्तें या शेड्यूल। हो सके तो सारे पन्ने।' }],
+    camera: 'कैमरा', gallery: 'गैलरी', pdf: 'PDF', useSample: 'सैंपल दस्तावेज़ इस्तेमाल करें', replace: 'बदलें', remove: 'हटाएँ',
+    tooBigT: 'यह फ़ाइल 15 MB से बड़ी है', tooBigB: 'इसकी जगह फ़ोटो लें, या छोटी PDF चुनें। हर फ़ाइल 15 MB तक हो सकती है।',
+    tipsT: 'साफ़ फ़ोटो के लिए सुझाव', tips: ['कागज़ को अच्छी रोशनी में सीधा रखें।', 'पूरा पन्ना फ़्रेम में आए।', 'छाया और चमक से बचें।', 'हर पन्ने की एक फ़ोटो काफ़ी है।'],
+    nextDoc: 'आगे: ', runCheck: 'मेरा क्लेम जांचें', demoErr: 'डेमो: "फ़ाइल बहुत बड़ी" वाली गलती दिखाएँ',
+    chkLabel: 'आपका क्लेम जांचा जा रहा है', chkH: 'हम हर लाइन ध्यान से देख रहे हैं।',
+    chkSteps: [{ t: 'आपके दस्तावेज़ पढ़ रहे हैं', s: 'Gemini बिल, लेटर और पॉलिसी पढ़ता है।' }, { t: 'नियमों से मिला रहे हैं', s: 'हमारा नियम-इंजन हर रुपये की जांच करता है।' }, { t: 'आसान भाषा में समझा रहे हैं', s: 'हिंदी और अंग्रेज़ी में।' }],
+    waitTip: 'तब तक जानिए',
+    tips2: ['सिर्फ़ कमरा महंगा होने की वजह से दवाइयों और जांच पर कटौती नहीं हो सकती। यह 2020 का IRDAI नियम है।', 'हम जो भी गलती दिखाते हैं, उसके साथ नियम और आधिकारिक स्रोत होता है।', 'Gemini पढ़ता और समझाता है; हर रुपये की जांच AI नहीं, हमारा नियम-इंजन करता है।', 'बीमा लोकपाल से शिकायत करना मुफ़्त है।'],
+    errH: 'जांच पूरी नहीं हो पाई', errB: 'जांच पूरी होने से पहले कनेक्शन टूट गया। आपके दस्तावेज़ ऐप में ही हैं। कृपया फिर से कोशिश करें।', retry: 'फिर से कोशिश करें', backHome: 'होम पर वापस',
+    claimBack: 'आप वापस क्लेम कर सकते हैं', heroSub: 'बीमा कंपनी की {n} कटौतियाँ नियमों के खिलाफ़ हैं।', goodNews: 'अच्छी ख़बर', cleanH: 'आपका क्लेम सही लगता है।', cleanSub: '{n} कटौतियाँ जांचीं। सभी आपकी पॉलिसी के हिसाब से सही हैं।',
+    demoBadge: 'डेमो डेटा', claimNo: 'क्लेम', claimed: 'क्लेम किया', approved: 'मंज़ूर', deducted: 'कटौती', askAbout: 'बीमा कंपनी से पूछें',
+    wrongH: 'जो कटौतियाँ गलत लगती हैं', askH: 'बीमा कंपनी से कारण पूछें', rightH: 'जो कटौतियाँ सही लगती हैं', items: 'आइटम',
+    vWrong: '✕ गलत', vAsk: '? बीमा कंपनी से पूछें', vRight: '✓ सही लगता है', seeDocs: 'दस्तावेज़ देखें', nextMoves: 'आपके अगले कदम', openLetter: 'शिकायत पत्र', openSteps: 'आगे के कदम',
+    fightCta: 'इस कटौती के खिलाफ़ लड़ें', letterCta: 'पत्र खोलें', askBtn: 'पूछें',
+    disclaimer: 'ClaimRight नियम बताता है; शिकायत करनी है या नहीं, यह आप तय करते हैं। जिन मामलों में डॉक्टरी या कानूनी राय चाहिए, उनके लिए वकील से मिलें। यह कानूनी सलाह नहीं है।',
+    readRule: 'नियम पढ़ें', nextCut: 'आगे', backToReport: 'रिपोर्ट पर वापस', ruleLbl: 'नियम',
+    st_verified: '✓ IRDAI का आधिकारिक स्रोत', st_policy: '▤ आपकी पॉलिसी से', st_press: '◎ ख़बरों में बताया गया',
+    openSource: 'स्रोत खोलें', gotIt: 'ठीक है', noUrl: 'स्रोत: आपकी पॉलिसी की शर्तें', officialWording: 'नियम क्या कहता है (अंग्रेज़ी में)',
+    docsH: 'दस्तावेज़', docNames: ['अस्पताल का बिल', 'सेटलमेंट लेटर', 'पॉलिसी'], openPdf: 'PDF खोलें',
+    fightTitle: 'कटौती के खिलाफ़ लड़ें', costH: 'कितना खर्च होगा', costSub: 'जांच मुफ़्त थी। पैसे तभी लगेंगे जब आप लड़ना चुनें।',
+    workFee: 'काम की फ़ीस', workSub: 'शिकायत पत्र और ट्रैकिंग के लिए', successFee: 'एडवांस सक्सेस फ़ीस (लौटाई जा सकती है)', successSub: '{rec} का 10%', capNote: ', ज़्यादा से ज़्यादा ₹2,999',
+    total: 'अभी कुल', gst: 'फ़ीस में 18% GST शामिल नहीं है।', outcomesH: 'आगे क्या होगा',
+    o1t: 'आप जीत गए', o1b: 'हम 10% रखते हैं।', o2t: 'आंशिक जीत', o2b: 'जितना वापस मिला, उसका 10% हम रखते हैं और बाकी लौटा देते हैं।',
+    o3t: '120 दिन में कुछ वापस नहीं मिला', o3b: 'आपकी 10% फ़ीस लौटा दी जाएगी। बीमा कंपनी का आख़िरी जवाब दिखाएँ; आपने हमारे शिकायत पत्र भेजे हों। ₹299 हम रखते हैं।',
+    pay: '{x} चुकाएँ (डेमो)', demoPayNote: 'डेमो: कोई असली भुगतान नहीं लिया जाता।',
+    paidChip: 'डेमो: कोई असली भुगतान नहीं हुआ', paidH: 'सब तैयार है।', paidB: 'अब शिकायत पत्र भेजें। हमने इसे हिंदी और अंग्रेज़ी में लिख दिया है।', paidAmt: 'चुकाया (डेमो)', seeSteps: 'आगे के कदम देखें',
+    letterTitle: 'शिकायत पत्र', letterIntro: 'पीली खाली जगह पर टैप करके भरें। फिर पत्र कॉपी या शेयर करें।', edit: 'टेक्स्ट बदलें', doneEdit: 'हो गया',
+    blanksLeft: '{n} खाली जगह भरनी बाकी', allFilled: 'सारी खाली जगह भर गईं। भेजने के लिए तैयार।', copy: 'कॉपी', whatsapp: 'व्हाट्सऐप', email: 'ईमेल', download: 'डाउनलोड',
+    copied: 'पत्र कॉपी हो गया', downloaded: 'पत्र डाउनलोड हो गया', fillH: 'खाली जगह भरें', save: 'सेव करें', nextSteps: 'आगे के कदम', subject: 'क्लेम {c} से जुड़ी शिकायत',
+    stepsTitle: 'आगे के कदम', stepsIntro: 'तीन कदम, एक के बाद एक। अगला कदम तभी उठाएँ जब ज़रूरत हो।', remind: 'हर तारीख से पहले याद दिलाएँ',
+    markDone: 'पूरा हुआ', doneLbl: '✓ पूरा · वापस लें',
+    chatTitle: 'ClaimRight से पूछें', chatIntro: '{name} के क्लेम के बारे में कुछ भी पूछें। मैं ऑडिट रिपोर्ट से जवाब देता हूँ, हिंदी या अंग्रेज़ी में।', checkingAudit: 'आपकी ऑडिट देख रहे हैं', toolsUsed: 'इस्तेमाल हुए टूल', typeHere: 'अपना सवाल लिखें…',
+    casesTitle: 'मेरे केस', open: 'खोलें', update: 'स्टेटस बदलें', now: 'अभी', updateH: 'यह केस अभी कहाँ है?', emptyH: 'अभी कोई केस नहीं।', emptyB: 'कोई क्लेम जांचें या डेमो केस खोलें। वह यहाँ दिखेगा ताकि आप उसे ट्रैक कर सकें।',
+    settingsTitle: 'सेटिंग्स', langH: 'भाषा', demoH: 'डेमो डेटा', demoB: 'इस वर्ज़न के सभी केस बनावटी डेमो डेटा हैं (Demo City Hospital, Demo Suraksha Health Insurance)। डेमो वर्ज़न: अभी असली मेडिकल दस्तावेज़ अपलोड न करें।',
+    discH: 'अस्वीकरण', aboutH: 'हमारे बारे में', aboutB: 'ClaimRight, Team Aviti की ओर से, Google Startup Buildathon India 2026 के लिए।', principle: 'Gemini पढ़ता और समझाता है; हर रुपये की जांच AI नहीं, हमारा नियम-इंजन करता है।',
+    version: 'वर्ज़न 1.0.0 (डेमो)', devH: 'डेवलपर', apiMode: 'API मोड', mock: 'मॉक', live: 'लाइव', liveNote: 'लाइव मोड Cloud Run सर्वर से जुड़ता है, जो बंद हो सकता है। यह प्रोटोटाइप हमेशा सैंपल फ़ाइलों से जवाब देता है।',
+    simErr: 'गलतियाँ सिमुलेट करें', reset: 'डेमो रीसेट करें', resetDone: 'डेमो रीसेट हो गया', tapsLeft: 'डेवलपर विकल्पों के लिए {n} बार और टैप करें',
+  },
+};
+const PH_HINT = { '[Date]': '20 Nov 2026', '[Address]': 'House no., street, city, PIN', '[Phone]': '98xxxxxxxx' };
+const FRESH_UP = () => ({ step: 0, files: [null, null, null], err: false, tips: false });
+
+const T_ADD = {
+  en: {
+    tabDemo: 'DEMO', demoTitle: 'DEMO MODE', demoH1: 'Try ClaimRight with sample claims',
+    demoIntro: 'These cases use synthetic demo data (Demo City Hospital, Demo Suraksha Health Insurance). Nothing here touches your own cases.',
+    demoCasesH: 'DEMO CASES', demoMoreH: 'MORE TO TRY', demoSim: 'See a check in action', demoSimSub: 'Watch the checking screen, then open the Dengue report',
+    demoReset: 'Reset demo progress', demoResetSub: 'Clears demo payments, letters, chats and steps', demoResetDone: 'Demo progress cleared',
+    noLetter: 'No letter is needed for this case.', letterLoading: 'Writing your letter…', letterErr: "Couldn't load the letter", retryShort: 'TRY AGAIN',
+    chatErr: "Sorry, I couldn't reach ClaimRight just now. Please try again in a moment.",
+    apiBase: 'Server URL', testConn: 'TEST', connOk: 'Connected', connFail: 'Not reachable', saved: 'Server URL saved', resetAll: 'RESET APP', resetAllDone: 'App reset',
+    chkNote: 'This usually takes 15 to 60 seconds. Please keep the app open.', chkNoteDemo: 'Demo: no documents are sent anywhere.',
+    emptyB: 'Check a claim and it will show up here, so you can track every step.',
+    pay: 'PAY {x}', payDemo: 'PAY {x} (DEMO)', paidAmt: 'PAID',
+  },
+  hi: {
+    tabDemo: 'डेमो', demoTitle: 'डेमो मोड', demoH1: 'सैंपल क्लेम से ClaimRight आज़माएँ',
+    demoIntro: 'ये केस बनावटी डेमो डेटा हैं (Demo City Hospital, Demo Suraksha Health Insurance)। इनका आपके अपने केस पर कोई असर नहीं होता।',
+    demoCasesH: 'डेमो केस', demoMoreH: 'और आज़माएँ', demoSim: 'जांच होते हुए देखें', demoSimSub: 'जांच वाली स्क्रीन देखें, फिर डेंगू की रिपोर्ट खोलें',
+    demoReset: 'डेमो की प्रगति रीसेट करें', demoResetSub: 'डेमो के भुगतान, पत्र, चैट और कदम मिटाता है', demoResetDone: 'डेमो की प्रगति मिटा दी गई',
+    noLetter: 'इस केस के लिए पत्र की ज़रूरत नहीं है।', letterLoading: 'आपका पत्र लिखा जा रहा है…', letterErr: 'पत्र लोड नहीं हो पाया', retryShort: 'फिर से कोशिश करें',
+    chatErr: 'माफ़ कीजिए, अभी ClaimRight से जुड़ नहीं पाए। थोड़ी देर बाद फिर से कोशिश करें।',
+    apiBase: 'सर्वर URL', testConn: 'जांचें', connOk: 'जुड़ गया', connFail: 'जुड़ नहीं पाया', saved: 'सर्वर URL सेव हो गया', resetAll: 'ऐप रीसेट करें', resetAllDone: 'ऐप रीसेट हो गया',
+    chkNote: 'इसमें आमतौर पर 15 से 60 सेकंड लगते हैं। कृपया ऐप खुला रखें।', chkNoteDemo: 'डेमो: कोई दस्तावेज़ कहीं नहीं भेजा जाता।',
+    emptyB: 'कोई क्लेम जांचें, वह यहाँ दिखेगा ताकि आप हर कदम ट्रैक कर सकें।',
+    pay: '{x} चुकाएँ', payDemo: '{x} चुकाएँ (डेमो)', paidAmt: 'चुकाया',
+  },
+};
+Object.assign(T.en, T_ADD.en); Object.assign(T.hi, T_ADD.hi);
+const CHIPS_LIVE = {
+  en: ['Why was my claim cut?', 'Which cuts can I claim back?', 'What should I do next?'],
+  hi: ['मेरा क्लेम क्यों कटा?', 'कौन-सी कटौतियाँ वापस क्लेम कर सकता हूँ?', 'अब आगे क्या करना है?'],
+};
+const ck = (id, demo) => (demo ? 'd:' : 'r:') + id;
+const mss = t => Math.floor(t / 60) + ':' + pad(Math.floor(t % 60));
+
+class Component extends DCLogic {
+  fileRef = React.createRef();
+  chatRef = React.createRef();
+  files = [null, null, null];
+  runId = 0;
+  state = this.initial();
+  initial() {
+    let s = {}; try { s = JSON.parse(localStorage.getItem(KEY) || '{}'); } catch (e) {}
+    return { ready: false, lang: s.lang || 'en', seenOnb: !!s.seenOnb, screen: s.lang && s.seenOnb ? 'home' : 'lang', hist: [], onb: 0,
+      caseId: null, demo: false, cut: null, sheet: null, rightOpen: false,
+      real: s.real || {}, caseOrder: s.caseOrder || [], stage: s.stage || {}, paid: s.paid || {}, done: s.done || {}, remind: s.remind || {},
+      letters: s.letters || {}, fetched: s.fetched || {}, chats: s.chats || {}, sessions: s.sessions || {},
+      letterLang: null, letterLoad: {}, editing: false, typing: null, tick: 0, input: '', up: FRESH_UP(),
+      chk: { t: 0, err: false, msg: '', demo: false }, rules: null, taps: 0, toast: null, fillVal: '', baseInput: '', conn: null };
+  }
+  componentDidMount() {
+    const boot = () => {
+      this.setState({ ready: true, baseInput: API().getBase() });
+      API().live.rules().then(r => r && Array.isArray(r.rules) && this.setState({ rules: r.rules })).catch(() => {});
+    };
+    if (window.CR_DATA && window.ClaimRightAPI) boot();
+    else this.poll = setInterval(() => { if (window.CR_DATA && window.ClaimRightAPI) { clearInterval(this.poll); boot(); } }, 50);
+  }
+  componentWillUnmount() { [this.poll, this.ci, this.ti].forEach(clearInterval); clearTimeout(this.tt); this.runId++; }
+  componentDidUpdate(pp, ps) {
+    const s = this.state;
+    try { localStorage.setItem(KEY, JSON.stringify({ lang: s.lang, seenOnb: s.seenOnb, real: s.real, caseOrder: s.caseOrder, stage: s.stage, paid: s.paid, done: s.done, remind: s.remind, letters: s.letters, fetched: s.fetched, chats: s.chats, sessions: s.sessions })); } catch (e) {}
+    if (s.screen === 'chat' && this.chatRef.current && (ps.chats !== s.chats || ps.typing !== s.typing || ps.screen !== 'chat')) { const el = this.chatRef.current; el.scrollTop = el.scrollHeight; }
+    if (s.ready && s.screen === 'letter' && s.caseId && !s.demo) this.ensureLetter(s.caseId, s.letterLang || s.lang);
+  }
+  caseData(id, demo) { return demo ? D().cases[id] : this.state.real[id]; }
+  key() { return ck(this.state.caseId, this.state.demo); }
+  go(screen, extra = {}) { this.setState(s => ({ hist: [...s.hist, { screen: s.screen, caseId: s.caseId, cut: s.cut, demo: s.demo }], screen, sheet: null, editing: false, ...extra })); }
+  stopRun() { this.runId++; clearInterval(this.ci); }
+  back = () => { this.stopRun(); this.setState(s => { const h = [...s.hist]; const p = h.pop() || { screen: 'home' }; return { hist: h, screen: p.screen, caseId: p.caseId, cut: p.cut, demo: !!p.demo, sheet: null, editing: false }; }); };
+  tab(screen) { this.stopRun(); this.setState({ screen, hist: [], sheet: null }); }
+  openCase(id, demo, resetTo) {
+    this.setState(s => {
+      const k = ck(id, demo);
+      const caseOrder = !demo && !s.caseOrder.includes(id) ? [id, ...s.caseOrder] : s.caseOrder;
+      const stage = s.stage[k] == null ? { ...s.stage, [k]: 0 } : s.stage;
+      const hist = resetTo ? [{ screen: resetTo }] : [...s.hist, { screen: s.screen, caseId: s.caseId, cut: s.cut, demo: s.demo }];
+      return { caseOrder, stage, hist, screen: 'report', caseId: id, demo, cut: null, rightOpen: false, sheet: null };
+    });
+  }
+  toast(msg) { clearTimeout(this.tt); this.setState({ toast: msg }); this.tt = setTimeout(() => this.setState({ toast: null }), 1800); }
+  setUp(p) { this.setState(s => ({ up: { ...s.up, ...p } })); }
+  setFile(meta, fileObj) { const step = this.state.up.step; this.files[step] = fileObj || null; this.setState(s => { const files = [...s.up.files]; files[step] = meta; return { up: { ...s.up, files, err: false } }; }); }
+  pick(kind) {
+    const el = this.fileRef.current; if (!el) return;
+    el.accept = kind === 'pdf' ? 'application/pdf' : 'image/jpeg,image/png,image/webp';
+    if (kind === 'camera') el.setAttribute('capture', 'environment'); else el.removeAttribute('capture');
+    el.click();
+  }
+  onFile = e => {
+    const f = e.target.files && e.target.files[0]; e.target.value = ''; if (!f) return;
+    if (f.size > 15 * 1024 * 1024) { this.setUp({ err: true }); return; }
+    this.setFile({ name: f.name, size: (f.size / 1048576).toFixed(1) + ' MB', url: f.type.startsWith('image/') ? URL.createObjectURL(f) : null }, f);
+  };
+  enterChecking(demo) {
+    this.stopRun();
+    this.setState(s => ({ screen: 'checking', hist: s.screen === 'checking' ? s.hist : [...s.hist, { screen: s.screen, caseId: s.caseId, demo: s.demo }], chk: { t: 0, err: false, msg: '', demo } }));
+    this.ci = setInterval(() => this.setState(s => ({ chk: { ...s.chk, t: s.chk.t + 0.25 } })), 250);
+    return this.runId;
+  }
+  // Real check: POST /api/audit with the three uploaded files.
+  startCheck = () => {
+    const files = this.files;
+    if (!files.every(Boolean)) { this.setState({ screen: 'upload' }); return; }
+    const run = this.enterChecking(false);
+    API().live.audit({ bill: files[0], settlement: files[1], policy: files[2] }).then(rep => {
+      if (run !== this.runId) return;
+      const id = rep.case_id || ('case_' + Date.now());
+      this.files = [null, null, null];
+      // Finish the animation: tick the remaining steps off one by one, and keep the screen up for at least 4.5 s
+      // (a cached check returns in under a second, which made this screen flash by).
+      const t0 = this.state.chk.t, ph = t0 < 5 ? 0 : t0 < 18 ? 1 : 2;
+      const wait = Math.max((3 - ph) * 700 + 700, 4500 - t0 * 1000);
+      const gap = Math.max(0.7, (wait / 1000 - 0.7) / (3 - ph));  // spread the remaining ticks over the wait
+      this.setState(s => ({ chk: { ...s.chk, fin: true, finAt: s.chk.t, finPh: ph, finGap: gap, finPct: Math.min(95, (1 - Math.exp(-t0 / 18)) * 100), finDur: (3 - ph) * gap } }));
+      setTimeout(() => {
+        if (run !== this.runId) return; clearInterval(this.ci);
+        this.setState(s => ({ real: { ...s.real, [id]: rep }, up: FRESH_UP() }), () => this.openCase(id, false, 'home'));
+      }, wait);
+    }).catch(err => {
+      if (run !== this.runId) return; clearInterval(this.ci);
+      this.setState(s => ({ chk: { ...s.chk, err: true, msg: String((err && err.message) || err) } }));
+    });
+  };
+  // Demo check: local animation only, then the bundled Dengue report.
+  startDemoCheck = () => {
+    const run = this.enterChecking(true);
+    setTimeout(() => { if (run !== this.runId) return; clearInterval(this.ci); this.openCase('dengue_delhi', true, 'demo'); }, 8500);
+  };
+  pushChat(k, msg, extra = {}) { this.setState(s => ({ ...extra, chats: { ...s.chats, [k]: [...(s.chats[k] || []), msg] } })); }
+  send(text) {
+    text = (text || '').trim(); if (!text || this.state.typing) return;
+    const s = this.state, id = s.caseId, demo = s.demo, k = this.key(), lang = s.lang;
+    this.pushChat(k, { user: true, text }, { input: '', typing: true, tick: 0 });
+    clearInterval(this.ti); this.ti = setInterval(() => this.setState(x => ({ tick: x.tick + 1 })), 500);
+    const finish = (msg, extra = {}) => { clearInterval(this.ti); this.pushChat(k, msg, { typing: null, ...extra }); };
+    if (demo) {
+      const r = mockReply(id, text, lang);
+      setTimeout(() => finish({ user: false, text: r.reply, tools: r.tools }), 2600 + Math.random() * 1400);
+      return;
+    }
+    API().live.chat(id, text, s.sessions[k]).then(r => {
+      finish({ user: false, text: r.reply || '', tools: r.tools_used || [] }, { sessions: { ...this.state.sessions, [k]: r.session_id || this.state.sessions[k] } });
+    }).catch(() => finish({ user: false, text: T[lang].chatErr, tools: [] }));
+  }
+  ensureLetter(id, l) {
+    const k = ck(id, false) + '_' + l, s = this.state;
+    if (s.letters[k] != null || s.fetched[k] || s.letterLoad[k]) return;
+    this.setState(x => ({ letterLoad: { ...x.letterLoad, [k]: 'loading' } }));
+    API().live.letter(id, l).then(r => this.setState(x => ({ fetched: { ...x.fetched, [k]: r.text || '' }, letterLoad: { ...x.letterLoad, [k]: null } })))
+      .catch(e => this.setState(x => ({ letterLoad: { ...x.letterLoad, [k]: 'err:' + ((e && e.message) || e) } })));
+  }
+  letterText(id, demo, l) {
+    const k = ck(id, demo) + '_' + l, s = this.state;
+    if (s.letters[k] != null) return s.letters[k];
+    return demo ? ((D().letters[id] || {})[l] || '') : (s.fetched[k] || '');
+  }
+  docsOf(c, id, demo) {
+    if (demo) return ['bill', 'settlement', 'policy'].map(k => ({ url: `demo_documents/${id}/${k}.pdf` }));
+    const d = c && c.docs; if (!d) return [];
+    const arr = Array.isArray(d) ? d : Object.entries(d).map(([k, v]) => typeof v === 'string' ? { name: k, url: v } : { name: k, ...v });
+    return arr.map(x => typeof x === 'string' ? { url: x } : { name: x.name || x.kind || x.type, url: x.url || x.href || '' }).filter(x => x.url)
+      .map(x => ({ ...x, url: /^https?:/.test(x.url) ? x.url : API().getBase() + (x.url.startsWith('/') ? '' : '/') + x.url }));
+  }
+  clearKeys(pred) {
+    const strip = o => Object.fromEntries(Object.entries(o).filter(([k]) => !pred(k)));
+    this.setState(s => ({ stage: strip(s.stage), paid: strip(s.paid), done: strip(s.done), remind: strip(s.remind), letters: strip(s.letters), chats: strip(s.chats) }));
+  }
+
+  renderVals() {
+    const s = this.state, lang = s.lang, en = lang === 'en', t = T[lang];
+    const L = en ? { h1: '1', h2: '1.05', h3: '1.35', body: '1.55', small: '1.6' } : { h1: '1.4', h2: '1.45', h3: '1.6', body: '1.8', small: '1.8' };
+    const F = en ? { h1: '64px', h2: '34px', h3: '28px' } : { h1: '36px', h2: '25px', h3: '22px' };
+    const tgl = on => ({ bg: on ? '#0f2a4a' : 'transparent', fg: on ? '#fff' : '#0f2a4a' });
+    const tg = { enBg: tgl(en).bg, enFg: tgl(en).fg, hiBg: tgl(!en).bg, hiFg: tgl(!en).fg };
+    const tgw = { enBg: en ? '#fff' : 'transparent', enFg: en ? '#15803d' : '#fff', hiBg: !en ? '#fff' : 'transparent', hiFg: !en ? '#15803d' : '#fff' };
+    const setLang = l => () => this.setState({ lang: l });
+    const scr = s.screen;
+    const is = { lang: scr === 'lang', onb: scr === 'onb', home: scr === 'home', upload: scr === 'upload', checking: scr === 'checking', report: scr === 'report', cut: scr === 'cut', pricing: scr === 'pricing', paid: scr === 'paid', letter: scr === 'letter', steps: scr === 'steps', chat: scr === 'chat', cases: scr === 'cases', settings: scr === 'settings', demo: scr === 'demo' };
+    const green = is.report || is.paid;
+    const base = {
+      t, L, F, tg, tgw, is, lang, input: s.input, fillVal: s.fillVal, toast: s.toast, toastOn: !!s.toast,
+      fileRef: this.fileRef, chatRef: this.chatRef, onFile: this.onFile,
+      sbBg: green ? '#15803d' : '#f6f3ec', sbFg: green ? '#fff' : '#0f2a4a',
+      hiBg: is.paid ? '#15803d' : '#f6f3ec', hiFg: is.paid ? '#fff' : '#0f2a4a',
+      setEn: setLang('en'), setHi: setLang('hi'), back: this.back,
+      pickEn: () => this.setState({ lang: 'en', screen: s.seenOnb ? 'home' : 'onb', onb: 0 }),
+      pickHi: () => this.setState({ lang: 'hi', screen: s.seenOnb ? 'home' : 'onb', onb: 0 }),
+      finishOnb: () => this.setState({ seenOnb: true, screen: 'home', hist: [] }),
+      goHome: () => this.tab('home'), startCheck: this.startCheck, demoCheck: this.startDemoCheck,
+      startUpload: () => { this.files = [null, null, null]; this.go('upload', { up: FRESH_UP() }); },
+      demoReset: () => { this.clearKeys(k => k.startsWith('d:')); this.toast(t.demoResetDone); },
+      showTabs: is.home || is.cases || is.settings || is.demo,
+      tabs: [['home', t.tabHome], ['cases', t.tabCases], ['settings', t.tabSettings], ['demo', t.tabDemo]].map(([k, label]) => ({ label, go: () => this.tab(k),
+        color: scr === k ? (k === 'demo' ? '#15803d' : '#0f2a4a') : '#64748b', bar: scr === k ? '#15803d' : 'transparent',
+        bg: k === 'demo' ? 'repeating-linear-gradient(135deg,#ece7dc 0 6px,#f6f3ec 6px 12px)' : 'none' })),
+      closeSheet: () => this.setState({ sheet: null }),
+      onInput: e => this.setState({ input: e.target.value }), onKey: e => { if (e.key === 'Enter') this.send(this.state.input); }, sendInput: () => this.send(this.state.input),
+      tapVersion: () => { const n = s.taps + 1; this.setState({ taps: n }); if (n < 5) this.toast(fmt(t.tapsLeft, { n: 5 - n })); },
+      onFillInput: e => this.setState({ fillVal: e.target.value }),
+      r: {}, cut: {}, p: {}, lt: {}, st: {}, ch: {}, sh: { open: false }, up: {}, chk: {}, onb: {}, dev: {}, demos: [], myCases: [], hasCases: false, noCases: true,
+    };
+    if (!s.ready) return base;
+    const data = D();
+
+    const oc = t.onb[s.onb];
+    base.onb = { n: pad(s.onb + 1), ...oc, bg: s.onb === 1 ? '#15803d' : '#0f2a4a', bigFont: s.onb === 1 ? '56px' : '96px',
+      dots: [0, 1, 2].map(i => ({ w: i === s.onb ? '28px' : '10px', bg: i === s.onb ? '#0f2a4a' : '#cbd5e1' })),
+      nextLabel: s.onb === 2 ? t.start : t.next,
+      next: () => s.onb === 2 ? this.setState({ seenOnb: true, screen: 'home', hist: [] }) : this.setState({ onb: s.onb + 1 }) };
+
+    const titleOf = (id, demo, c) => demo ? CASE_META[id][en ? 'sen' : 'shi'] : (c.hospital_name || c.claim_number || id);
+
+    // demo cases (demo tab only)
+    base.demos = CASE_ORDER.map((id, i) => { const c = data.cases[id], rec = c.recoverable > 0;
+      return { num: pad(i + 1), title: CASE_META[id][lang], patient: c.patient_name, amt: rec ? c.display.recoverable : t.allGood, amtLabel: rec ? t.toClaim : t.looksCorrect, amtColor: rec ? '#15803d' : '#475569', open: () => this.openCase(id, true) }; });
+
+    // real cases only
+    base.myCases = s.caseOrder.filter(id => s.real[id]).map(id => { const c = s.real[id], k = ck(id, false), stage = s.stage[k] || 0, rec = c.recoverable > 0;
+      return { title: titleOf(id, false, c), patient: c.patient_name, amt: rec ? (c.display && c.display.recoverable) || inr(c.recoverable) : t.allGood, amtLabel: rec ? t.toClaim : t.looksCorrect, amtColor: rec ? '#15803d' : '#475569',
+        stageLabel: STAGES[lang][stage], nowLbl: t.now, openLbl: t.open, updateLbl: t.update,
+        bars: STAGES.en.map((_, i) => ({ bg: i <= stage ? '#15803d' : '#d6d0c3' })),
+        open: () => this.openCase(id, false), update: () => this.setState({ sheet: { type: 'status', k } }) }; });
+    base.hasCases = base.myCases.length > 0; base.noCases = !base.hasCases;
+
+    // upload
+    const u = s.up, file = u.files[u.step];
+    base.up = { steps: t.stepNames.map((label, i) => ({ num: pad(i + 1), label, bar: u.files[i] ? '#15803d' : i === u.step ? '#0f2a4a' : '#cbd5e1', numColor: i === u.step ? '#0f2a4a' : u.files[i] ? '#15803d' : '#94a3b8', labelColor: i === u.step ? '#0f2a4a' : '#64748b', go: () => (i <= u.step || u.files[i - 1]) && this.setUp({ step: i, err: false }) })),
+      docTitle: t.docs[u.step].t, docHelp: t.docs[u.step].h, hasFile: !!file, noFile: !file, file: file || {}, isImg: !!(file && file.url), isDoc: !!(file && !file.url), imgBg: file && file.url ? 'url(' + file.url + ')' : 'none',
+      err: u.err, tips: u.tips, tipsSign: u.tips ? '−' : '+',
+      camera: () => this.pick('camera'), gallery: () => this.pick('gallery'), pdf: () => this.pick('pdf'), replace: () => this.pick('gallery'), remove: () => this.setFile(null, null),
+      toggleTips: () => this.setUp({ tips: !u.tips }),
+      btnOpacity: file ? '1' : '0.35', nextLabel: u.step < 2 ? t.nextDoc + t.stepNames[u.step + 1] : t.runCheck,
+      next: () => { if (!file) return; if (u.step < 2) this.setUp({ step: u.step + 1, err: false }); else this.startCheck(); } };
+    base.upBack = () => u.step > 0 ? this.setUp({ step: u.step - 1, err: false }) : this.back();
+
+    // checking
+    const c0 = s.chk, ct = c0.t, dots = '.'.repeat(1 + (Math.floor(ct * 2) % 3));
+    const phase = c0.fin ? Math.min(3, c0.finPh + Math.floor((ct - c0.finAt) / c0.finGap))
+      : c0.demo ? (ct < 3 ? 0 : ct < 6 ? 1 : 2) : (ct < 5 ? 0 : ct < 18 ? 1 : 2);
+    const pct = c0.fin ? c0.finPct + (100 - c0.finPct) * Math.min(1, (ct - c0.finAt) / c0.finDur)
+      : c0.demo ? Math.min(ct / 8.5, 1) * 100 : Math.min(95, (1 - Math.exp(-ct / 18)) * 100);
+    base.chk = { running: !c0.err, err: c0.err, pct: pct + '%', elapsed: mss(ct), tip: t.tips2[Math.floor(ct / 4) % t.tips2.length],
+      note: c0.demo ? t.chkNoteDemo : t.chkNote, msg: c0.msg, hasMsg: !!c0.msg, retry: c0.demo ? this.startDemoCheck : this.startCheck,
+      steps: t.chkSteps.map((x, i) => { const done = i < phase, act = i === phase; return { title: x.t, sub: x.s, mark: done ? '✓' : act ? dots : pad(i + 1), bg: done ? '#15803d' : act ? '#0f2a4a' : 'transparent', fg: done || act ? '#fff' : '#94a3b8', border: done || act ? '0' : '2px solid #cbd5e1', titleColor: done || act ? '#0f2a4a' : '#94a3b8' }; }) };
+
+    const RULES = s.rules || data.rules;
+    const ruleOf = id => { const r = RULES.find(x => x.id === id) || data.rules.find(x => x.id === id); if (!r) return null; const st = r.status;
+      return { ...r, title: en ? r.title : (RULE_HI[id] || r.title), statusLabel: t['st_' + st] || st, chipBg: st === 'verified' ? '#15803d' : st === 'policy' ? '#0f2a4a' : 'transparent', chipFg: st === 'press' ? '#334155' : '#fff', chipBorder: st === 'press' ? '1.5px dashed #475569' : '0', hasUrl: !!r.source_url, noUrl: !r.source_url }; };
+
+    const c = s.caseId ? this.caseData(s.caseId, s.demo) : null;
+    if (c) {
+      const id = s.caseId, demo = s.demo, K = ck(id, demo), ex = c['explanations_' + lang] || c.explanations_en || {};
+      const findings = c.findings || [];
+      const all = findings.map((f, i) => ({ f, i }));
+      const groups = { wrong: all.filter(x => x.f.verdict === 'wrong'), ask: all.filter(x => x.f.verdict === 'ask'), looks_right: all.filter(x => x.f.verdict === 'looks_right') };
+      const shortOf = i => demo && SHORT[id] && SHORT[id][i] ? SHORT[id][i][en ? 0 : 1] : (en ? findings[i].title : (findings[i].title_hi || findings[i].title));
+      const amtOf = f => f.amount_display || inr(f.amount || 0);
+      const row = (x, k) => ({ num: pad(k + 1), short: shortOf(x.i), amt: amtOf(x.f), open: () => this.go('cut', { cut: x.i }) });
+      const sum = groups.looks_right.reduce((a, x) => a + (x.f.amount || 0), 0);
+      const disp = c.display || { recoverable: inr(c.recoverable || 0), amount_claimed: inr(c.amount_claimed || 0), amount_approved: inr(c.amount_approved || 0), total_deducted: inr(c.total_deducted || 0), to_clarify: inr(c.to_clarify || 0) };
+      const pr = pricing(c.recoverable || 0, c.to_clarify || 0), clean = !pr, paid = !!s.paid[K];
+      const docs = this.docsOf(c, id, demo);
+      base.r = { c, d: disp, caseShort: titleOf(id, demo, c), clean, notClean: !clean, paid, isDemo: demo, hasDocs: docs.length > 0,
+        heroSub: fmt(t.heroSub, { n: groups.wrong.length }), cleanSub: fmt(t.cleanSub, { n: findings.length }),
+        hasAskAmt: (c.to_clarify || 0) > 0, hasWrong: groups.wrong.length > 0, hasAsk: groups.ask.length > 0,
+        wrong: groups.wrong.map(row), ask: groups.ask.map(row), right: groups.looks_right.map(row),
+        rightOpen: s.rightOpen || clean, rightSign: (s.rightOpen || clean) ? '−' : '+', rightMeta: `${groups.looks_right.length} ${t.items} · ${inr(sum)}`,
+        toggleRight: () => this.setState({ rightOpen: !s.rightOpen }),
+        showCta: !clean, ctaLabel: paid ? t.letterCta : t.fightCta, cta: () => paid ? this.go('letter', { letterLang: lang }) : this.go('pricing'),
+        askBottom: clean ? '20px' : '100px', padBottom: clean ? '90px' : '80px' };
+      base.openDocs = () => this.setState({ sheet: { type: 'docs' } });
+      base.goChat = () => this.go('chat');
+      base.goLetter = () => this.go('letter', { letterLang: lang });
+      base.goSteps = () => this.go('steps');
+
+      if (s.cut != null && findings[s.cut]) {
+        const f = findings[s.cut], grp = groups[f.verdict] || [], pos = grp.findIndex(x => x.i === s.cut);
+        const rid = (f.rule_ids_cited && f.rule_ids_cited[0]) || f.rule_id, rule = rid ? ruleOf(rid) : null;
+        const nxt = grp[pos + 1], prv = grp[pos - 1];
+        const vMap = { wrong: [t.vWrong, '#b91c1c'], ask: [t.vAsk, '#b45309'], looks_right: [t.vRight, '#475569'] }[f.verdict] || [t.vRight, '#475569'];
+        base.cut = { pos: pad(pos + 1), of: pad(grp.length), vLabel: vMap[0], vColor: vMap[1], amt: amtOf(f),
+          title: en ? f.title : shortOf(s.cut), text: ex[String(s.cut)] || f.why || '', hasRule: !!rule, rule: rule || {},
+          openRule: () => this.setState({ sheet: { type: 'rule', id: rid } }),
+          nextLabel: nxt ? `${t.nextCut}: ${shortOf(nxt.i)}` : t.backToReport,
+          next: () => nxt ? this.setState({ cut: nxt.i }) : this.back(), prev: () => prv ? this.setState({ cut: prv.i }) : this.back(), prevOpacity: prv ? '1' : '0.4' };
+      }
+
+      if (pr) base.p = { work: inr(pr.work), success: inr(pr.success), total: inr(pr.total), hasSuccess: pr.success > 0,
+        successSub: fmt(t.successSub, { rec: disp.recoverable }) + (pr.capped ? t.capNote : ''), payLabel: fmt(t.payDemo /* no payment provider yet: every Pay is a demo */, { x: inr(pr.total) }) };
+      const markPaid = () => this.setState(x => ({ paid: { ...x.paid, [K]: true }, screen: 'paid', sheet: null }));
+      base.pay = () => demo ? markPaid() : API().live.pay(id, pr && pr.total).then(markPaid).catch(e => this.toast(String((e && e.message) || e)));
+      base.paidLetter = () => this.setState({ screen: 'letter', letterLang: lang, editing: false });
+      base.paidSteps = () => this.setState({ screen: 'steps' });
+
+      const ll = s.letterLang || lang, LK = K + '_' + ll, ltxt = this.letterText(id, demo, ll), hasLetter = !!ltxt;
+      const load = demo ? null : s.letterLoad[LK], loading = load === 'loading', failed = !!load && load.startsWith('err:');
+      const phs = ltxt.match(/\[[^\]]+\]/g) || [];
+      base.lt = { hasLetter, loading, failed, errMsg: failed ? load.slice(4) : '', none: !hasLetter && !loading && !failed,
+        retry: () => this.setState(x => ({ letterLoad: { ...x.letterLoad, [LK]: null } })),
+        view: !s.editing && hasLetter, editing: s.editing && hasLetter, text: ltxt, lh: ll === 'hi' ? '1.85' : '1.6',
+        lines: hasLetter ? ltxt.split('\n').map(line => ({ minH: line.trim() ? '0' : '14px', parts: line.split(/(\[[^\]]+\])/).filter(x => x !== '').map(p => { const ph = /^\[[^\]]+\]$/.test(p); return { text: p, ph, plain: !ph, fill: () => this.setState({ sheet: { type: 'fill', ph: p }, fillVal: '' }) }; }) })) : [],
+        blankMsg: phs.length ? fmt(t.blanksLeft, { n: phs.length }) : t.allFilled, blankColor: phs.length ? '#92400e' : '#15803d',
+        editLabel: s.editing ? t.doneEdit : t.edit, toggleEdit: () => this.setState({ editing: !s.editing }),
+        onEdit: e => this.setState(x => ({ letters: { ...x.letters, [LK]: e.target.value } })),
+        setEn: () => this.setState({ letterLang: 'en', editing: false }), setHi: () => this.setState({ letterLang: 'hi', editing: false }),
+        enBg: tgl(ll === 'en').bg, enFg: tgl(ll === 'en').fg, hiBg: tgl(ll === 'hi').bg, hiFg: tgl(ll === 'hi').fg,
+        copy: () => { try { navigator.clipboard.writeText(ltxt); } catch (e) {} this.toast(t.copied); },
+        whatsapp: () => window.open('https://wa.me/?text=' + encodeURIComponent(ltxt), '_blank'),
+        email: () => window.open('mailto:?subject=' + encodeURIComponent(fmt(t.subject, { c: c.claim_number || '' })) + '&body=' + encodeURIComponent(ltxt), '_blank'),
+        download: () => { const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([ltxt], { type: 'text/plain;charset=utf-8' })); a.download = `ClaimRight_letter_${id}_${ll}.txt`; a.click(); this.toast(t.downloaded); } };
+      base.saveFill = () => { const ph = s.sheet && s.sheet.ph, v = s.fillVal.trim(); if (!ph || !v) return; this.setState(x => ({ letters: { ...x.letters, [LK]: ltxt.split(ph).join(v) }, sheet: null, fillVal: '' })); };
+      base.onFillKey = e => { if (e.key === 'Enter') base.saveFill(); };
+
+      const esc = c.escalation || [];
+      base.st = { swBg: s.remind[K] ? '#15803d' : '#cbd5e1', swJustify: s.remind[K] ? 'flex-end' : 'flex-start', toggleRemind: () => this.setState(x => ({ remind: { ...x.remind, [K]: !x.remind[K] } })),
+        items: esc.map((e, i, arr) => { const dk = K + '_' + e.id, done = !!s.done[dk], st = e.status, hi = !en && STEP_HI[e.id];
+          return { mark: done ? '✓' : String(i + 1), dotBg: done ? '#15803d' : i === 0 ? '#0f2a4a' : '#fff', dotFg: done || i === 0 ? '#fff' : '#0f2a4a', dotBorder: done ? '#15803d' : '#0f2a4a', lineOpacity: i === arr.length - 1 ? '0' : '1',
+            date: e.date ? fmtDate(e.date, lang).toUpperCase() : '', dateColor: done ? '#15803d' : '#0f2a4a', step: hi ? hi.step : e.step, text: hi ? hi.text : e.text, lh: en ? '1.55' : '1.8',
+            url: e.source_url || '#', statusLabel: t['st_' + st] || st || '', chipBg: st === 'verified' ? '#15803d' : st === 'policy' ? '#0f2a4a' : 'transparent', chipFg: st === 'press' ? '#334155' : '#fff', chipBorder: st === 'press' ? '1.5px dashed #475569' : '0',
+            btnLabel: done ? t.doneLbl : t.markDone, btnBg: done ? '#15803d' : '#fff', btnFg: done ? '#fff' : '#0f2a4a',
+            toggle: () => this.setState(x => ({ done: { ...x.done, [dk]: !x.done[dk] } })) }; }) };
+
+      const msgs = s.chats[K] || [];
+      const chipList = demo && CHIPS[id] ? CHIPS[id][lang] : CHIPS_LIVE[lang];
+      base.ch = { sub: `${c.patient_name || ''} · ${titleOf(id, demo, c)}`, intro: fmt(t.chatIntro, { name: c.patient_name || '' }),
+        msgs: msgs.map(m => ({ user: m.user, bot: !m.user, text: m.text, lh: en ? '1.55' : '1.8', paras: m.user ? [] : md(m.text, lang), hasTools: !m.user && m.tools && m.tools.length > 0, tools: m.tools ? `${t.toolsUsed}: ${m.tools.join(', ')}` : '' })),
+        typing: !!s.typing, typingLabel: `${t.checkingAudit}${'.'.repeat(1 + s.tick % 3)} ${Math.floor(s.tick / 2)}s`, pulse: s.tick % 2 ? '0.3' : '1',
+        showChips: !s.typing, chips: chipList.filter(q => !msgs.some(m => m.user && m.text === q)).map(q => ({ text: q, send: () => this.send(q) })) };
+
+      if (s.sheet && s.sheet.type === 'docs') base.sh = { open: true, isDocs: true, docs: docs.map((d, i) => ({ num: pad(i + 1), name: d.name || t.docNames[i] || 'Document', open: t.openPdf, url: d.url })) };
+    }
+
+    const sh = s.sheet;
+    if (sh && sh.type !== 'docs') {
+      base.sh = { open: true, isRule: sh.type === 'rule', isFill: sh.type === 'fill', isStatus: sh.type === 'status' };
+      if (sh.type === 'rule') base.sh.rule = ruleOf(sh.id) || {};
+      if (sh.type === 'fill') { base.sh.ph = sh.ph; base.sh.phHint = PH_HINT[sh.ph] || ''; }
+      if (sh.type === 'status') { const cur = s.stage[sh.k] || 0;
+        base.sh.stages = STAGES[lang].map((label, i) => ({ num: pad(i + 1), label, check: i === cur ? '✓' : '', w: i === cur ? '700' : '500', bg: i === cur ? '#e7f1ea' : 'transparent',
+          pick: () => this.setState(x => ({ stage: { ...x.stage, [sh.k]: i }, sheet: null })) })); }
+    }
+
+    base.dev = { open: s.taps >= 5, base: s.baseInput, onBase: e => this.setState({ baseInput: e.target.value }),
+      save: () => { API().setBase(s.baseInput); this.setState({ baseInput: API().getBase(), conn: null }); this.toast(t.saved); },
+      test: () => { this.setState({ conn: { ok: null, msg: '…' } }); API().live.health().then(r => this.setState({ conn: { ok: true, msg: `${t.connOk} · ${JSON.stringify(r)}` } })).catch(e => this.setState({ conn: { ok: false, msg: `${t.connFail} · ${(e && e.message) || e}` } })); },
+      hasStatus: !!s.conn, status: s.conn ? s.conn.msg : '', statusColor: s.conn && s.conn.ok ? '#15803d' : s.conn && s.conn.ok === false ? '#b91c1c' : '#475569',
+      reset: () => { this.files = [null, null, null]; this.setState({ real: {}, caseOrder: [], stage: {}, paid: {}, done: {}, remind: {}, letters: {}, fetched: {}, chats: {}, sessions: {}, letterLoad: {}, seenOnb: false, screen: 'lang', hist: [], taps: 0, caseId: null, demo: false }); } };
+    return base;
+  }
+}
+
+</script>
+</body>
+</html>
